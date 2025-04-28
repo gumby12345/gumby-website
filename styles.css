@@ -23,13 +23,10 @@ body {
 
 /* Image styling */
 .gallery img {
-    width: 1388px;  /* Set a fixed width */
+    width: auto;  /* Set a fixed width */
     height: auto;
     border: none;   /* Remove any borders */
     border-radius: 8px; /* Optional: rounded corners */
     box-shadow: none; /* Remove shadow */
-    transition: transform 0.3s ease; /* Smooth transition for scaling */
     cursor: pointer; /* Pointer cursor to indicate hover interaction */
 }
-
-
