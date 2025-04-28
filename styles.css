@@ -37,6 +37,9 @@ body {
   column-count: 2;
   column-gap: 16px;
   padding: 0 20px;
+  height: 80vh; /* Make sure the container is tall enough to scroll */
+  overflow: auto; /* Allow scrolling */
+  -webkit-overflow-scrolling: touch; /* Enable momentum scrolling on touch devices */
 }
 
 .grid-container img {
@@ -47,6 +50,11 @@ body {
   border-radius: 0;
   box-shadow: none;
   border: none;
+}
+
+/* Smooth scrolling behavior */
+.grid-container {
+  scroll-behavior: smooth;
 }
 
 /* Hide inactive gallery */
