@@ -11,29 +11,21 @@
 
     <!-- Gallery Section -->
     <div class="gallery">
-        <img src="images/GUMBYWEBFIXED1.png" alt="Image 1">
+        <img id="image1" src="images/GUMBYWEBFIXED1.png" alt="Image 1">
     </div>
-    
+
     <script>
-    // Get all the images in the gallery
-    const images = document.querySelectorAll('.gallery img');
+        const image = document.getElementById("image1");
 
-    images.forEach(image => {
-        // Add mousemove event listener to each image
-        image.addEventListener('mousemove', (event) => {
-            // Get the position of the image and its width/height
-            const rect = image.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
+        // On hover, change the image source
+        image.addEventListener('mouseenter', function() {
+            image.src = "images/GUMBYWEBFIXED2.png"; // Change image when mouse enters
+        });
 
-            // Get the distance from the mouse cursor to the center of the image
-            const distanceX = Math.abs(event.clientX - centerX);
-            const distanceY = Math.abs(event.clientY - centerY);
-
-            // Set a threshold to trigger the scale effect only near the center
-            const threshold = 100; // Adjust this value to make the hover area smaller or larger
-
-            if (distanceX < threshold && distanceY < threshold) {
-                image.classList.add('hovered'); // Trigger the scale effect
-            } else {
-                image.classList.remove('
+        // On mouse leave, change the image back to the original
+        image.addEventListener('mouseleave', function() {
+            image.src = "images/GUMBYWEBFIXED1.png"; // Change back to the original image
+        });
+    </script>
+</body>
+</html>
