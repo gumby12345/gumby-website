@@ -44,12 +44,17 @@ body {
   transform: scale(1.1);
 }
 
-/* Masonry-style gallery containers */
+/* Masonry layout: Set up two columns */
 .grid-container {
+  display: block;
+  margin: 0 auto;
   padding: 0 20px;
 }
 
-/* Images inside gallery */
+.grid-sizer {
+  width: 50%; /* Each column will be 50% of the container */
+}
+
 .grid-container img {
   width: 100%;
   height: auto;
@@ -81,6 +86,11 @@ body {
 
   .grid-container {
     padding: 0 10px;
+  }
+
+  /* Single column for smaller screens */
+  .grid-sizer {
+    width: 100%;
   }
 }
 
