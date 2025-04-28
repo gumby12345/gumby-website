@@ -32,8 +32,4 @@ body {
     cursor: pointer; /* Pointer cursor to indicate hover interaction */
 }
 
-/* Hover effect - image grows progressively bigger */
-.gallery img:hover {
-    z-index: 1000; /* Make sure the image is on top */
-    position: relative; /* Keep it in the normal flow */
-}
+
