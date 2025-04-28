@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>gumby's house</title>
 
-    <!-- Link to Favicon -->
+    <!-- Favicon -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="images/favicon.png" type="image/png">
 
@@ -24,38 +24,38 @@
 
     <!-- Art Gallery (Visible by default) -->
     <div class="grid-container" id="galleryA">
-        <img src="https://iili.io/3WUTWHx.webp" alt="Art 1">
-        <img src="https://iili.io/3WUTEKu.webp" alt="Art 2">
-        <img src="https://iili.io/3WUTvKg.webp" alt="Art 3">
-        <img src="https://iili.io/3WUT2cJ.webp" alt="Art 4">
-        <img src="https://iili.io/3WUTlV9.webp" alt="Art 5">
-        <img src="https://iili.io/3WUTNoP.webp" alt="Art 6">
-        <img src="https://iili.io/3WUT8la.webp" alt="Art 7">
+        <img src="https://iili.io/3WUuvXS.webp" alt="Art 1">
+        <img src="https://iili.io/3WUuGst.webp" alt="Art 2">
+        <img src="https://iili.io/3WUuR0g.webp" alt="Art 3">
+        <img src="https://iili.io/3WUuFfe.webp" alt="Art 4">
+        <img src="https://iili.io/3WUuJxS.webp" alt="Art 5">
+        <img src="https://iili.io/3WUu2s9.webp" alt="Art 6">
+        <img src="https://iili.io/3WUuobV.webp" alt="Art 7">
     </div>
 
     <!-- Cart Gallery (Hidden by default) -->
-    <div class="grid-container" id="galleryB" style="display: none;">
-        <img src="https://iili.io/3WUuvXS.webp" alt="Cart 1">
-        <img src="https://iili.io/3WUuGst.webp" alt="Cart 2">
-        <img src="https://iili.io/3WUuR0g.webp" alt="Cart 3">
-        <img src="https://iili.io/3WUuFfe.webp" alt="Cart 4">
-        <img src="https://iili.io/3WUuJxS.webp" alt="Cart 5">
-        <img src="https://iili.io/3WUu2s9.webp" alt="Cart 6">
-        <img src="https://iili.io/3WUuobV.webp" alt="Cart 7">
-        <img src="https://iili.io/3WUT6DN.webp" alt="Cart 8">
-        <img src="https://iili.io/3WUTgHv.webp" alt="Cart 9">
-        <img src="https://iili.io/3WUTrRR.webp" alt="Cart 10">
-        <img src="https://iili.io/3WUTOV1.webp" alt="Cart 11">
+    <div class="grid-container hidden" id="galleryB">
+        <img src="https://iili.io/3WUT6DN.webp" alt="Client Art 1">
+        <img src="https://iili.io/3WUTgHv.webp" alt="Client Art 2">
+        <img src="https://iili.io/3WUTrRR.webp" alt="Client Art 3">
+        <img src="https://iili.io/3WUTOV1.webp" alt="Client Art 4">
+        <img src="https://iili.io/3WUT8la.webp" alt="Client Art 5">
+        <img src="https://iili.io/3WUTWHx.webp" alt="Client Art 6">
+        <img src="https://iili.io/3WUTlV9.webp" alt="Client Art 7">
+        <img src="https://iili.io/3WUTNoP.webp" alt="Client Art 8">
+        <img src="https://iili.io/3WUT2cJ.webp" alt="Client Art 9">
+        <img src="https://iili.io/3WUTvKg.webp" alt="Client Art 10">
+        <img src="https://iili.io/3WUTEKu.webp" alt="Client Art 11">
     </div>
 
     <script>
-        // Main image logic
+        // Image and Sound Logic
         const images = [
-            "images/GUMBYWEBFIXED1.png", 
-            "images/GUMBYWEBFIXED2.png", 
-            "images/GUMBYLOGO3.png", 
+            "images/GUMBYWEBFIXED1.png",
+            "images/GUMBYWEBFIXED2.png",
+            "images/GUMBYLOGO3.png",
             "images/GUMBYLOGO4.png",
-            "images/GUMBYLOGO2-.png",
+            "images/GUMBYLOGO2.png",
             "images/GUMBYLOGO5.png",
             "images/GUMBYLOGO6.png",
             "images/GUMBYLOGO7.png",
@@ -100,25 +100,20 @@
             return selected;
         }
 
-        imageElement.addEventListener('click', function() {
+        imageElement.addEventListener('click', function () {
             imageElement.src = getRandomImage();
             const sound = new Audio(getRandomSound());
             sound.play();
         });
 
-        // Gallery toggle logic
+        // Toggle Gallery Visibility
         const toggleButton = document.getElementById("toggleGallery");
         const galleryA = document.getElementById("galleryA");
         const galleryB = document.getElementById("galleryB");
 
         toggleButton.addEventListener("click", () => {
-            if (galleryA.style.display === "none") {
-                galleryA.style.display = "flex";
-                galleryB.style.display = "none";
-            } else {
-                galleryA.style.display = "none";
-                galleryB.style.display = "flex";
-            }
+            galleryA.classList.toggle("hidden");
+            galleryB.classList.toggle("hidden");
         });
     </script>
 </body>
