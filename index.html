@@ -11,8 +11,9 @@
 
     <!-- Gallery Section -->
     <div class="gallery">
-        <img src="images/GUMBYWEBFIXED1.png" alt="Image 1">>
+        <img src="images/GUMBYWEBFIXED1.png" alt="Image 1">
     </div>
+    
     <script>
     // Get all the images in the gallery
     const images = document.querySelectorAll('.gallery img');
@@ -35,15 +36,4 @@
             if (distanceX < threshold && distanceY < threshold) {
                 image.classList.add('hovered'); // Trigger the scale effect
             } else {
-                image.classList.remove('hovered'); // Remove the scale effect if outside the hover zone
-            }
-        });
-
-        // Optional: Reset on mouse leave
-        image.addEventListener('mouseleave', () => {
-            image.classList.remove('hovered');
-        });
-    });
-</script>
-</body>
-</html>
+                image.classList.remove('
