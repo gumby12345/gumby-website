@@ -1,43 +1,37 @@
-/* Reset styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Toggle Button Styles */
+.toggle-container {
+    text-align: center;
+    margin-top: 40px;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    padding: 0;
-}
-
-/* Gallery container */
-.gallery {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-    margin-top: 100px;
-}
-
-/* Image styling */
-.gallery img {
-    max-width: 100%;  /* Responsive width */
-    height: auto;     /* Maintain aspect ratio */
-    border: none;
-    border-radius: 8px;
-    box-shadow: none;
-    transition: none;
+.toggle-container button {
+    padding: 10px 20px;
+    font-size: 16px;
     cursor: pointer;
-    display: block;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
 }
 
-/* Optional: tweak layout for smaller screens */
-@media (max-width: 600px) {
-    .gallery {
-        padding: 10px;
-        gap: 10px;
-        margin-top: 50px;
-    }
+/* Gallery Styles */
+.art-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+.art-gallery img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Hide a section */
+.hidden {
+    display: none;
 }
