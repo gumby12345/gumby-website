@@ -24,11 +24,17 @@
             "images/GUMBYLOGO3.png", 
             "images/GUMBYLOGO4.png",  // Previous images
             "images/GUMBYLOGO2.png",
-            "images/GUMBYLOGO5.png"
-            "images/GUMBYLOGO6.png"
-            "images/GUMBYLOGO7.png"
-            "images/GUMBYLOGO8.png"// New image
+            "images/GUMBYLOGO5.png",
+            "images/GUMBYLOGO6.png",// New image
+            "images/GUMBYLOGO7.png",
+            "images/GUMBYLOGO8.png"
         ];
+
+        // Array of sound files to randomly cycle through (sound1.mp3 to sound37.mp3)
+        const sounds = [];
+        for (let i = 1; i <= 37; i++) {
+            sounds.push(`audio/sound${i}.mp3`);
+        }
 
         // Preload all images to reduce latency on click
         const preloadImages = images.map(imgSrc => {
@@ -37,8 +43,16 @@
             return img;
         });
 
-        // Store the images that have already been shown
+        // Preload all sounds to reduce latency on click
+        const preloadSounds = sounds.map(soundSrc => {
+            const audio = new Audio();
+            audio.src = soundSrc;
+            return audio;
+        });
+
+        // Store the images and sounds that have already been shown
         let shownImages = [];
+        let shownSounds = [];
 
         const imageElement = document.getElementById("image1");
 
@@ -63,10 +77,35 @@
             return selectedImage;
         }
 
-        // On click, change the image to a random one that hasn't been shown yet
+        // Function to randomly select a sound from the array that hasn't been played yet
+        function getRandomSound() {
+            // Filter out the sounds that have already been played
+            const remainingSounds = sounds.filter(sound => !shownSounds.includes(sound));
+
+            // If there are no remaining sounds, reset the shownSounds array
+            if (remainingSounds.length === 0) {
+                shownSounds = [];
+                return getRandomSound(); // Recursively call to restart the process
+            }
+
+            // Randomly select one sound from the remaining sounds
+            const randomIndex = Math.floor(Math.random() * remainingSounds.length);
+            const selectedSound = remainingSounds[randomIndex];
+
+            // Mark this sound as played
+            shownSounds.push(selectedSound);
+
+            return selectedSound;
+        }
+
+        // On click, change the image to a random one and play a random sound that hasn't been shown yet
         imageElement.addEventListener('click', function() {
             // Change image on click
             imageElement.src = getRandomImage();
+
+            // Play a random sound on click
+            const sound = new Audio(getRandomSound());
+            sound.play();
         });
     </script>
 </body>
