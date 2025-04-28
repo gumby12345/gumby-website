@@ -8,46 +8,39 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
-  padding: 0;
 }
 
-/* Main Image */
+/* Center main image */
 .gallery {
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
-.gallery img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Toggle Button Styles */
+/* Toggle button styles */
 .toggle-container {
   text-align: center;
   margin: 30px 0;
 }
 
 .toggle-container button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: #333;
-  color: #fff;
+  font-size: 24px;
+  background: none;
   border: none;
-  border-radius: 5px;
+  cursor: pointer;
+  color: #000;
+  padding: 10px;
 }
 
-/* Grid container for both galleries */
+/* Shared gallery grid */
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 10px;
   padding: 20px;
 }
 
-/* Image styles */
+/* Images in gallery */
 .grid-container img {
   width: 100%;
   height: auto;
@@ -55,10 +48,7 @@ body {
   display: block;
 }
 
-/* Utility class to hide sections */
+/* Hide inactive gallery */
 .hidden {
-  display: none !important;
-}
-
-    }
+  display: none;
 }
