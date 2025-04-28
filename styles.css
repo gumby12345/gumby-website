@@ -44,21 +44,20 @@ body {
   transform: scale(1.1);
 }
 
-/* Gallery grid layout */
+/* Gallery grid layout with 2 fixed columns */
 .grid-container {
-  column-count: 2;
-  column-gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
   padding: 0 20px;
-  height: 80vh;
-  overflow: auto;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
+  height: auto;
+  overflow: visible;
 }
 
+/* Image styling */
 .grid-container img {
   width: 100%;
   height: auto;
-  margin-bottom: 16px;
   display: block;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -79,8 +78,8 @@ body {
 /* Medium screens (tablets) */
 @media screen and (max-width: 768px) {
   .grid-container {
-    column-count: 1;
-    column-gap: 12px;
+    grid-template-columns: 1fr;
+    gap: 12px;
     padding: 0 10px;
   }
 
@@ -102,9 +101,4 @@ body {
   .toggle-container button {
     font-size: 36px;
   }
-
-  .grid-container {
-    height: 60vh;
-  }
 }
-
