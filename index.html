@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>gumby's house</title>
-
-    <!-- Favicon links -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="images/favicon.png" type="image/png" sizes="32x32">
-
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,16 +13,47 @@
         <img id="image1" src="images/GUMBYWEBFIXED1.png" alt="Image 1">
     </div>
 
+    <!-- Toggle Button to switch between two galleries -->
+    <div class="toggle-container">
+        <button id="toggleButton">Switch to Gallery B</button>
+    </div>
+
+    <!-- Art Gallery A (shown by default) -->
+    <div id="art-gallery-a" class="art-gallery">
+        <img src="images/art1.png" alt="Artwork A1">
+        <img src="images/art2.png" alt="Artwork A2">
+        <img src="images/art3.png" alt="Artwork A3">
+        <img src="images/art4.png" alt="Artwork A4">
+        <img src="images/art5.png" alt="Artwork A5">
+        <img src="images/art6.png" alt="Artwork A6">
+        <img src="images/art7.png" alt="Artwork A7">
+    </div>
+
+    <!-- Art Gallery B (hidden by default) -->
+    <div id="art-gallery-b" class="art-gallery hidden">
+        <img src="images/cart1.png" alt="Cartoon Artwork B1">
+        <img src="images/cart2.png" alt="Cartoon Artwork B2">
+        <img src="images/cart3.png" alt="Cartoon Artwork B3">
+        <img src="images/cart4.png" alt="Cartoon Artwork B4">
+        <img src="images/cart5.png" alt="Cartoon Artwork B5">
+        <img src="images/cart6.png" alt="Cartoon Artwork B6">
+        <img src="images/cart7.png" alt="Cartoon Artwork B7">
+        <img src="images/cart8.png" alt="Cartoon Artwork B8">
+        <img src="images/cart9.png" alt="Cartoon Artwork B9">
+        <img src="images/cart10.png" alt="Cartoon Artwork B10">
+        <img src="images/cart11.png" alt="Cartoon Artwork B11">
+    </div>
+
     <script>
         // Array of images to randomly cycle through, including the new images
         const images = [
             "images/GUMBYWEBFIXED1.png", 
             "images/GUMBYWEBFIXED2.png", 
             "images/GUMBYLOGO3.png", 
-            "images/GUMBYLOGO4.png",
-            "images/GUMBYLOGO2-.png",
+            "images/GUMBYLOGO4.png",  
+            "images/GUMBYLOGO2.png",
             "images/GUMBYLOGO5.png",
-            "images/GUMBYLOGO6.png",
+            "images/GUMBYLOGO6.png", 
             "images/GUMBYLOGO7.png",
             "images/GUMBYLOGO8.png"
         ];
@@ -60,24 +87,34 @@
         // Function to randomly select an image from the array that hasn't been shown yet
         function getRandomImage() {
             const remainingImages = images.filter(img => !shownImages.includes(img));
+
             if (remainingImages.length === 0) {
                 shownImages = [];
-                return getRandomImage();
+                return getRandomImage(); // Recursively call to restart the process
             }
-            const selectedImage = remainingImages[Math.floor(Math.random() * remainingImages.length)];
+
+            const randomIndex = Math.floor(Math.random() * remainingImages.length);
+            const selectedImage = remainingImages[randomIndex];
+
             shownImages.push(selectedImage);
+
             return selectedImage;
         }
 
         // Function to randomly select a sound from the array that hasn't been played yet
         function getRandomSound() {
             const remainingSounds = sounds.filter(sound => !shownSounds.includes(sound));
+
             if (remainingSounds.length === 0) {
                 shownSounds = [];
-                return getRandomSound();
+                return getRandomSound(); // Recursively call to restart the process
             }
-            const selectedSound = remainingSounds[Math.floor(Math.random() * remainingSounds.length)];
+
+            const randomIndex = Math.floor(Math.random() * remainingSounds.length);
+            const selectedSound = remainingSounds[randomIndex];
+
             shownSounds.push(selectedSound);
+
             return selectedSound;
         }
 
@@ -86,6 +123,23 @@
             imageElement.src = getRandomImage();
             const sound = new Audio(getRandomSound());
             sound.play();
+        });
+
+        // Toggle gallery sections on button click
+        const toggleButton = document.getElementById("toggleButton");
+        const galleryA = document.getElementById("art-gallery-a");
+        const galleryB = document.getElementById("art-gallery-b");
+
+        toggleButton.addEventListener("click", () => {
+            galleryA.classList.toggle("hidden");
+            galleryB.classList.toggle("hidden");
+
+            // Toggle button text
+            if (galleryA.classList.contains("hidden")) {
+                toggleButton.textContent = "Switch to Gallery A";
+            } else {
+                toggleButton.textContent = "Switch to Gallery B";
+            }
         });
     </script>
 </body>
