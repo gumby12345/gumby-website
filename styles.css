@@ -20,11 +20,11 @@ body {
 /* Toggle button styles */
 .toggle-container {
   text-align: center;
-  margin: 30px 0;
+  margin: 80px 0 30px; /* Increased top margin to push gallery lower */
 }
 
 .toggle-container button {
-  font-size: 24px;
+  font-size: 72px; /* 3x larger */
   background: none;
   border: none;
   cursor: pointer;
