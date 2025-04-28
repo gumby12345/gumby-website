@@ -11,12 +11,6 @@ body {
     padding: 0;
 }
 
-h1 {
-    text-align: center;
-    padding: 20px;
-    color: #333;
-}
-
 /* Gallery container */
 .gallery {
     display: flex;
@@ -24,11 +18,12 @@ h1 {
     flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
+    margin-top: 50px;  /* Adds space above the images */
 }
 
 /* Image styling */
 .gallery img {
-    width: 300px;  /* Set a fixed size */
+    width: 300px;  /* Set a starting size */
     height: auto;
     border: none;   /* Remove any borders */
     border-radius: 8px; /* Optional: rounded corners */
@@ -37,11 +32,9 @@ h1 {
     cursor: pointer; /* Pointer cursor to indicate hover interaction */
 }
 
-/* Hover effect - image grows and fills the screen */
+/* Hover effect - image grows progressively bigger */
 .gallery img:hover {
-    transform: scale(1.2); /* Scale the image moderately (to 120%) */
+    transform: scale(1.5); /* Make the image grow larger when hovered */
     z-index: 1000; /* Make sure the image is on top */
     position: relative; /* Keep it in the normal flow */
 }
-
-
