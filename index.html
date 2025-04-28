@@ -12,18 +12,17 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
   <!-- Main Image Section -->
   <div class="gallery">
-    <img id="image1" src="images/GUMBYWEBFIXED1.png" alt="Main Image" />
+    <img id="image1" src="images/GUMBYWEBFIXED1.png" alt="Image 1">
   </div>
 
-  <!-- Gallery Toggle Button -->
+  <!-- Toggle Button -->
   <div class="toggle-container">
-    <button id="toggleGallery">Switch Gallery</button>
+    <button id="toggleGallery">☺</button>
   </div>
 
-  <!-- Art Gallery (Visible by default) -->
+  <!-- Art Gallery -->
   <div class="grid-container" id="galleryA">
     <img src="https://iili.io/3WUuvXS.webp" alt="Art 1">
     <img src="https://iili.io/3WUuGst.webp" alt="Art 2">
@@ -34,7 +33,7 @@
     <img src="https://iili.io/3WUuobV.webp" alt="Art 7">
   </div>
 
-  <!-- Cart Gallery (Hidden by default) -->
+  <!-- Cart Gallery -->
   <div class="grid-container hidden" id="galleryB">
     <img src="https://iili.io/3WUT6DN.webp" alt="Client Art 1">
     <img src="https://iili.io/3WUTgHv.webp" alt="Client Art 2">
@@ -50,7 +49,6 @@
   </div>
 
   <script>
-    // Toggle logic
     const toggleButton = document.getElementById("toggleGallery");
     const galleryA = document.getElementById("galleryA");
     const galleryB = document.getElementById("galleryB");
@@ -59,7 +57,57 @@
       galleryA.classList.toggle("hidden");
       galleryB.classList.toggle("hidden");
     });
-  </script>
 
+    // Main image randomizer (optional if kept)
+    const images = [
+      "images/GUMBYWEBFIXED1.png", 
+      "images/GUMBYWEBFIXED2.png", 
+      "images/GUMBYLOGO3.png", 
+      "images/GUMBYLOGO4.png",
+      "images/GUMBYLOGO2.png",
+      "images/GUMBYLOGO5.png",
+      "images/GUMBYLOGO6.png",
+      "images/GUMBYLOGO7.png",
+      "images/GUMBYLOGO8.png"
+    ];
+
+    const sounds = [];
+    for (let i = 1; i <= 37; i++) {
+      sounds.push(`audio/sound${i}.mp3`);
+    }
+
+    let shownImages = [];
+    let shownSounds = [];
+
+    const imageElement = document.getElementById("image1");
+
+    function getRandomImage() {
+      const remaining = images.filter(img => !shownImages.includes(img));
+      if (remaining.length === 0) {
+        shownImages = [];
+        return getRandomImage();
+      }
+      const selected = remaining[Math.floor(Math.random() * remaining.length)];
+      shownImages.push(selected);
+      return selected;
+    }
+
+    function getRandomSound() {
+      const remaining = sounds.filter(snd => !shownSounds.includes(snd));
+      if (remaining.length === 0) {
+        shownSounds = [];
+        return getRandomSound();
+      }
+      const selected = remaining[Math.floor(Math.random() * remaining.length)];
+      shownSounds.push(selected);
+      return selected;
+    }
+
+    imageElement.addEventListener("click", function () {
+      imageElement.src = getRandomImage();
+      const sound = new Audio(getRandomSound());
+      sound.play();
+    });
+  </script>
 </body>
 </html>
