@@ -1,3 +1,4 @@
+
 /* Reset and base styles */
 * {
   margin: 0;
@@ -6,100 +7,49 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, sans-serif;
   background-color: #f0f0f0;
-  color: #000;
 }
 
-/* Main image section */
+/* Center main image */
 .gallery {
   display: flex;
   justify-content: center;
   margin-top: 60px;
 }
 
-.gallery img {
-  max-width: 100%;
-  height: auto;
-  cursor: pointer;
-}
-
-/* Toggle button */
+/* Toggle button styles */
 .toggle-container {
   text-align: center;
-  margin: 100px 0 40px;
+  margin: 80px 0 30px; /* Increased top margin to push gallery lower */
 }
 
 .toggle-container button {
-  font-size: 72px;
+  font-size: 72px; /* 3x larger */
   background: none;
   border: none;
   cursor: pointer;
   color: #000;
-  font-family: Arial, sans-serif;
-  transition: transform 0.2s ease;
+  padding: 10px;
 }
 
-.toggle-container button:hover {
-  transform: scale(1.1);
-}
-
-/* Masonry layout: Set up two columns */
+/* Shared gallery grid */
 .grid-container {
-  display: block;
-  margin: 0 auto;
-  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 20px;
 }
 
-.grid-sizer {
-  width: 50%; /* Each column will be 50% of the container */
-}
-
+/* Images in gallery */
 .grid-container img {
   width: 100%;
   height: auto;
-  margin-bottom: 16px;
+  object-fit: cover;
   display: block;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
 }
 
-.grid-container img:hover {
-  transform: scale(1.02);
-}
-
-/* Hide gallery when not active */
+/* Hide inactive gallery */
 .hidden {
   display: none;
-}
-
-/* Responsive Styles */
-@media screen and (max-width: 768px) {
-  .toggle-container button {
-    font-size: 48px;
-  }
-
-  .gallery {
-    margin-top: 40px;
-  }
-
-  .grid-container {
-    padding: 0 10px;
-  }
-
-  /* Single column for smaller screens */
-  .grid-sizer {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .toggle-container button {
-    font-size: 36px;
-  }
-
-  .gallery {
-    margin-top: 30px;
-  }
 }
