@@ -40,21 +40,15 @@ body {
 /* Gallery Grid Styles */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr); /* Creates two columns */
     gap: 15px;
     margin-top: 20px;
     padding: 0 20px;
 }
 
 .grid-container img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Hide a section */
-.hidden {
-    display: none;
-}
+    width: 100%; /* Ensures images fill the column width */
+    height: auto; /* Maintains aspect ratio */
+    object-fit: cover; /* Ensures images cover the space without distortion */
+    border: none; /* Removes border */
+    box-shadow: none; /* Removes shadow */
