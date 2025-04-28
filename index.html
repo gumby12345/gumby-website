@@ -17,25 +17,42 @@
         const images = [
             "images/GUMBYWEBFIXED1.png", 
             "images/GUMBYWEBFIXED2.png", 
-            "images/GUMBYLOGO4.png", 
-            "images/GUMBYLOGO3.png",  // Previous images
+            "images/GUMBYWEBFIXED3.png", 
+            "images/GUMBYWEBFIXED4.png",  // Previous images
             "images/GUMBYLOGO1.png",  // New image
             "images/GUMBYLOGO2.png"   // New image
         ];
 
+        // Store the images that have already been shown
+        let shownImages = [];
+
         const imageElement = document.getElementById("image1");
 
-        // Function to randomly select an image from the array
+        // Function to randomly select an image from the array that hasn't been shown yet
         function getRandomImage() {
-            const randomIndex = Math.floor(Math.random() * images.length);
-            return images[randomIndex];
+            // Filter out the images that have already been shown
+            const remainingImages = images.filter(img => !shownImages.includes(img));
+
+            // If there are no remaining images, reset the shownImages array
+            if (remainingImages.length === 0) {
+                shownImages = [];
+                return getRandomImage(); // Recursively call to restart the process
+            }
+
+            // Randomly select one image from the remaining images
+            const randomIndex = Math.floor(Math.random() * remainingImages.length);
+            const selectedImage = remainingImages[randomIndex];
+
+            // Mark this image as shown
+            shownImages.push(selectedImage);
+
+            return selectedImage;
         }
 
-        // On click, change the image to a random one
+        // On click, change the image to a random one that hasn't been shown yet
         imageElement.addEventListener('click', function() {
             // Change image on click
             imageElement.src = getRandomImage();
         });
     </script>
-</body>
-</html>
+</
