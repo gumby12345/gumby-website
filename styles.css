@@ -34,15 +34,7 @@ h1 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease; /* Smooth transition */
     cursor: pointer; /* Pointer cursor to indicate hover interaction */
+    position: relative; /* Make sure it's positioned correctly */
 }
 
-/* Hover effect - image grows and fills the screen */
-.gallery img:hover {
-    transform: scale(2); /* Scale the image */
-    z-index: 1000; /* Make sure the image is on top */
-    position: fixed; /* Position it fixed on the screen */
-    top: 0;
-    left: 0;
-    width: 100vw; /* Make image take the full width of the viewport */
-    height: 100vh; /* Make image take the full height of the viewport */
-    object-fit: cover; /* Ensure the image covers the*
+/* Hover*
