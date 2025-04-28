@@ -24,7 +24,7 @@ body {
   cursor: pointer;
 }
 
-/* Toggle button container */
+/* Toggle button */
 .toggle-container {
   text-align: center;
   margin: 100px 0 40px;
@@ -44,20 +44,16 @@ body {
   transform: scale(1.1);
 }
 
-/* Gallery grid layout with 2 fixed columns */
+/* Masonry-style gallery containers */
 .grid-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
   padding: 0 20px;
-  height: auto;
-  overflow: visible;
 }
 
-/* Image styling */
+/* Images inside gallery */
 .grid-container img {
   width: 100%;
   height: auto;
+  margin-bottom: 16px;
   display: block;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -68,21 +64,13 @@ body {
   transform: scale(1.02);
 }
 
-/* Hide inactive gallery */
+/* Hide gallery when not active */
 .hidden {
   display: none;
 }
 
 /* Responsive Styles */
-
-/* Medium screens (tablets) */
 @media screen and (max-width: 768px) {
-  .grid-container {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 0 10px;
-  }
-
   .toggle-container button {
     font-size: 48px;
   }
@@ -90,15 +78,18 @@ body {
   .gallery {
     margin-top: 40px;
   }
+
+  .grid-container {
+    padding: 0 10px;
+  }
 }
 
-/* Small screens (phones) */
 @media screen and (max-width: 480px) {
-  .gallery {
-    margin-top: 30px;
-  }
-
   .toggle-container button {
     font-size: 36px;
+  }
+
+  .gallery {
+    margin-top: 30px;
   }
 }
