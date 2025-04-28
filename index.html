@@ -7,25 +7,23 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- No heading text here, it's completely removed -->
-
     <!-- Gallery Section -->
     <div class="gallery">
         <img id="image1" src="images/GUMBYWEBFIXED1.png" alt="Image 1">
     </div>
 
     <script>
-        const image = document.getElementById("image1");
+        // Array of images to randomly cycle through, including the new images
+        const images = [
+            "images/GUMBYWEBFIXED1.png", 
+            "images/GUMBYWEBFIXED2.png", 
+            "images/GUMBYWEBFIXED3.png", 
+            "images/GUMBYWEBFIXED4.png",  // Previous images
+            "images/GUMBYLOGO1.png",  // New image
+            "images/GUMBYLOGO2.png"   // New image
+        ];
 
-        // On hover, change the image source
-        image.addEventListener('mouseenter', function() {
-            image.src = "images/GUMBYWEBFIXED2.png"; // Change image when mouse enters
-        });
+        const imageElement = document.getElementById("image1");
 
-        // On mouse leave, change the image back to the original
-        image.addEventListener('mouseleave', function() {
-            image.src = "images/GUMBYWEBFIXED1.png"; // Change back to the original image
-        });
-    </script>
-</body>
-</html>
+        // Function to randomly select an image from the array
+        function getRandomImage()
