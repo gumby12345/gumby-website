@@ -10,42 +10,43 @@ body {
   background-color: #f0f0f0;
 }
 
-/* Center main image */
+/* Main image section */
 .gallery {
   display: flex;
   justify-content: center;
   margin-top: 60px;
 }
 
-/* Toggle button styles */
+/* Toggle button container */
 .toggle-container {
   text-align: center;
-  margin: 80px 0 30px; /* Increased top margin to push gallery lower */
+  margin: 100px 0 40px; /* Pushes galleries farther down */
 }
 
+/* Big, icon-style toggle button */
 .toggle-container button {
-  font-size: 72px; /* 3x larger */
+  font-size: 72px;
   background: none;
   border: none;
   cursor: pointer;
   color: #000;
-  padding: 10px;
 }
 
-/* Shared gallery grid */
+/* Masonry-style galleries using columns */
 .grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  padding: 20px;
+  column-count: 2;
+  column-gap: 16px;
+  padding: 0 20px;
 }
 
-/* Images in gallery */
 .grid-container img {
   width: 100%;
   height: auto;
-  object-fit: cover;
+  margin-bottom: 16px;
   display: block;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
 }
 
 /* Hide inactive gallery */
