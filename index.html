@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>gumby's house</title>
 
-    <!-- Link to Favicon -->
+    <!-- Favicon links -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.png" type="image/png" sizes="32x32">
 
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -22,10 +23,10 @@
             "images/GUMBYWEBFIXED1.png", 
             "images/GUMBYWEBFIXED2.png", 
             "images/GUMBYLOGO3.png", 
-            "images/GUMBYLOGO4.png",  // Previous images
+            "images/GUMBYLOGO4.png",
             "images/GUMBYLOGO2.png",
             "images/GUMBYLOGO5.png",
-            "images/GUMBYLOGO6.png",// New image
+            "images/GUMBYLOGO6.png",
             "images/GUMBYLOGO7.png",
             "images/GUMBYLOGO8.png"
         ];
@@ -58,52 +59,31 @@
 
         // Function to randomly select an image from the array that hasn't been shown yet
         function getRandomImage() {
-            // Filter out the images that have already been shown
             const remainingImages = images.filter(img => !shownImages.includes(img));
-
-            // If there are no remaining images, reset the shownImages array
             if (remainingImages.length === 0) {
                 shownImages = [];
-                return getRandomImage(); // Recursively call to restart the process
+                return getRandomImage();
             }
-
-            // Randomly select one image from the remaining images
-            const randomIndex = Math.floor(Math.random() * remainingImages.length);
-            const selectedImage = remainingImages[randomIndex];
-
-            // Mark this image as shown
+            const selectedImage = remainingImages[Math.floor(Math.random() * remainingImages.length)];
             shownImages.push(selectedImage);
-
             return selectedImage;
         }
 
         // Function to randomly select a sound from the array that hasn't been played yet
         function getRandomSound() {
-            // Filter out the sounds that have already been played
             const remainingSounds = sounds.filter(sound => !shownSounds.includes(sound));
-
-            // If there are no remaining sounds, reset the shownSounds array
             if (remainingSounds.length === 0) {
                 shownSounds = [];
-                return getRandomSound(); // Recursively call to restart the process
+                return getRandomSound();
             }
-
-            // Randomly select one sound from the remaining sounds
-            const randomIndex = Math.floor(Math.random() * remainingSounds.length);
-            const selectedSound = remainingSounds[randomIndex];
-
-            // Mark this sound as played
+            const selectedSound = remainingSounds[Math.floor(Math.random() * remainingSounds.length)];
             shownSounds.push(selectedSound);
-
             return selectedSound;
         }
 
         // On click, change the image to a random one and play a random sound that hasn't been shown yet
         imageElement.addEventListener('click', function() {
-            // Change image on click
             imageElement.src = getRandomImage();
-
-            // Play a random sound on click
             const sound = new Audio(getRandomSound());
             sound.play();
         });
