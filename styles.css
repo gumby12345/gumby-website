@@ -6,8 +6,9 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   background-color: #f0f0f0;
+  color: #000;
 }
 
 /* Main image section */
@@ -17,46 +18,55 @@ body {
   margin-top: 60px;
 }
 
+.gallery img {
+  max-width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
 /* Toggle button container */
 .toggle-container {
   text-align: center;
-  margin: 100px 0 40px; /* Pushes galleries farther down */
+  margin: 100px 0 40px;
 }
 
-/* Big, icon-style toggle button */
 .toggle-container button {
   font-size: 72px;
   background: none;
   border: none;
   cursor: pointer;
   color: #000;
-  font-family: "Arial", sans-serif; /* Use a standard font to prevent emoji rendering */
+  font-family: Arial, sans-serif;
+  transition: transform 0.2s ease;
 }
 
-/* Masonry-style galleries using columns */
+.toggle-container button:hover {
+  transform: scale(1.1);
+}
+
+/* Gallery grid layout */
 .grid-container {
   column-count: 2;
   column-gap: 16px;
   padding: 0 20px;
-  height: 80vh; /* Make sure the container is tall enough to scroll */
-  overflow: auto; /* Allow scrolling */
-  -webkit-overflow-scrolling: touch; /* Enable momentum scrolling on touch devices */
+  height: 80vh;
+  overflow: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* Make images responsive, fill the column */
 .grid-container img {
   width: 100%;
   height: auto;
   margin-bottom: 16px;
   display: block;
-  border-radius: 0;
-  box-shadow: none;
-  border: none;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
 }
 
-/* Smooth scrolling behavior */
-.grid-container {
-  scroll-behavior: smooth;
+.grid-container img:hover {
+  transform: scale(1.02);
 }
 
 /* Hide inactive gallery */
@@ -64,39 +74,37 @@ body {
   display: none;
 }
 
-/* Responsive Styles for Mobile */
+/* Responsive Styles */
+
+/* Medium screens (tablets) */
 @media screen and (max-width: 768px) {
-  /* Stack the galleries into a single column on smaller screens */
   .grid-container {
     column-count: 1;
-    column-gap: 8px;
+    column-gap: 12px;
     padding: 0 10px;
   }
 
-  /* Adjust the toggle button size for smaller screens */
   .toggle-container button {
     font-size: 48px;
   }
 
-  /* Adjust the main image section for mobile */
-  .gallery img {
-    max-width: 100%;
-    height: auto;
+  .gallery {
+    margin-top: 40px;
   }
 }
 
-/* For very small screens (portrait mode, small devices) */
+/* Small screens (phones) */
 @media screen and (max-width: 480px) {
   .gallery {
     margin-top: 30px;
   }
 
-  /* Even smaller button on tiny devices */
   .toggle-container button {
     font-size: 36px;
   }
 
   .grid-container {
-    height: 60vh; /* Slightly reduce the height of the gallery */
+    height: 60vh;
   }
 }
+
