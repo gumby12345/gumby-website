@@ -17,10 +17,10 @@
         const images = [
             "images/GUMBYWEBFIXED1.png", 
             "images/GUMBYWEBFIXED2.png", 
+            "images/GUMBYLOGO4.png", 
+            "images/GUMBYLOGO3.png",  // Previous images
             "images/GUMBYLOGO1.png",  // New image
             "images/GUMBYLOGO2.png"   // New image
-            "images/GUMBYLOGO3.png"
-            "images/GUMBYLOGO4.png"
         ];
 
         const imageElement = document.getElementById("image1");
@@ -31,16 +31,10 @@
             return images[randomIndex];
         }
 
-        // On hover, change the image to a random one
-        imageElement.addEventListener('mouseenter', function() {
-            // Change image on hover
+        // On click, change the image to a random one
+        imageElement.addEventListener('click', function() {
+            // Change image on click
             imageElement.src = getRandomImage();
-        });
-
-        // On mouse leave, keep the last image that was displayed
-        imageElement.addEventListener('mouseleave', function() {
-            // Keep the last image shown
-            // No need to change anything here, the last hovered image stays
         });
     </script>
 </body>
