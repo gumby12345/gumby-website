@@ -3,66 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>gumby's house</title>
+  <title>Gumby's House</title>
 
   <!-- Favicon -->
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="icon" href="images/favicon.png" type="image/png">
 
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Main Image Section -->
-  <div class="gallery">
-    <img id="image1" src="images/GUMBYWEBFIXED1.png" alt="Image 1">
-  </div>
 
-  <!-- Toggle Button -->
-  <div class="toggle-container">
-    <button id="toggleGallery">☺</button>
-  </div>
+  <main>
 
-  <!-- Art Gallery -->
-  <div class="grid-container" id="galleryA">
-    <img src="https://iili.io/3WUuvXS.webp" alt="Art 1">
-    <img src="https://iili.io/3WUuGst.webp" alt="Art 2">
-    <img src="https://iili.io/3WUuR0g.webp" alt="Art 3">
-    <img src="https://iili.io/3WUuFfe.webp" alt="Art 4">
-    <img src="https://iili.io/3WUuJxS.webp" alt="Art 5">
-    <img src="https://iili.io/3WUu2s9.webp" alt="Art 6">
-    <img src="https://iili.io/3WUuobV.webp" alt="Art 7">
-  </div>
+    <!-- Main Image Section -->
+    <section class="gallery">
+      <img id="image1" src="images/GUMBYWEBFIXED1.png" alt="Main Image">
+    </section>
 
-  <!-- Cart Gallery -->
-  <div class="grid-container hidden" id="galleryB">
-    <img src="https://iili.io/3WUT6DN.webp" alt="Client Art 1">
-    <img src="https://iili.io/3WUTgHv.webp" alt="Client Art 2">
-    <img src="https://iili.io/3WUTrRR.webp" alt="Client Art 3">
-    <img src="https://iili.io/3WUTOV1.webp" alt="Client Art 4">
-    <img src="https://iili.io/3WUT8la.webp" alt="Client Art 5">
-    <img src="https://iili.io/3WUTWHx.webp" alt="Client Art 6">
-    <img src="https://iili.io/3WUTlV9.webp" alt="Client Art 7">
-    <img src="https://iili.io/3WUTNoP.webp" alt="Client Art 8">
-    <img src="https://iili.io/3WUT2cJ.webp" alt="Client Art 9">
-    <img src="https://iili.io/3WUTvKg.webp" alt="Client Art 10">
-    <img src="https://iili.io/3WUTEKu.webp" alt="Client Art 11">
-  </div>
+    <!-- Toggle Button -->
+    <div class="toggle-container">
+      <button id="toggleGallery" aria-label="Toggle Gallery View">☺</button>
+    </div>
 
+    <!-- Gallery A -->
+    <section class="grid-container" id="galleryA">
+      <img src="https://iili.io/3WUuvXS.webp" alt="Art 1">
+      <img src="https://iili.io/3WUuGst.webp" alt="Art 2">
+      <img src="https://iili.io/3WUuR0g.webp" alt="Art 3">
+      <img src="https://iili.io/3WUuFfe.webp" alt="Art 4">
+      <img src="https://iili.io/3WUuJxS.webp" alt="Art 5">
+      <img src="https://iili.io/3WUu2s9.webp" alt="Art 6">
+      <img src="https://iili.io/3WUuobV.webp" alt="Art 7">
+    </section>
+
+    <!-- Gallery B -->
+    <section class="grid-container hidden" id="galleryB">
+      <img src="https://iili.io/3WUT6DN.webp" alt="Client Art 1">
+      <img src="https://iili.io/3WUTgHv.webp" alt="Client Art 2">
+      <img src="https://iili.io/3WUTrRR.webp" alt="Client Art 3">
+      <img src="https://iili.io/3WUTOV1.webp" alt="Client Art 4">
+      <img src="https://iili.io/3WUT8la.webp" alt="Client Art 5">
+      <img src="https://iili.io/3WUTWHx.webp" alt="Client Art 6">
+      <img src="https://iili.io/3WUTlV9.webp" alt="Client Art 7">
+      <img src="https://iili.io/3WUTNoP.webp" alt="Client Art 8">
+      <img src="https://iili.io/3WUT2cJ.webp" alt="Client Art 9">
+      <img src="https://iili.io/3WUTvKg.webp" alt="Client Art 10">
+      <img src="https://iili.io/3WUTEKu.webp" alt="Client Art 11">
+    </section>
+
+  </main>
+
+  <!-- JavaScript -->
   <script>
     const toggleButton = document.getElementById("toggleGallery");
     const galleryA = document.getElementById("galleryA");
     const galleryB = document.getElementById("galleryB");
+    const imageElement = document.getElementById("image1");
 
     toggleButton.addEventListener("click", () => {
       galleryA.classList.toggle("hidden");
       galleryB.classList.toggle("hidden");
     });
 
-    // Main image randomizer (optional if kept)
     const images = [
-      "images/GUMBYWEBFIXED1.png", 
-      "images/GUMBYWEBFIXED2.png", 
-      "images/GUMBYLOGO3.png", 
+      "images/GUMBYWEBFIXED1.png",
+      "images/GUMBYWEBFIXED2.png",
+      "images/GUMBYLOGO3.png",
       "images/GUMBYLOGO4.png",
       "images/GUMBYLOGO2-.png",
       "images/GUMBYLOGO5.png",
@@ -71,43 +78,28 @@
       "images/GUMBYLOGO8.png"
     ];
 
-    const sounds = [];
-    for (let i = 1; i <= 37; i++) {
-      sounds.push(`audio/sound${i}.mp3`);
-    }
+    const sounds = Array.from({ length: 37 }, (_, i) => `audio/sound${i + 1}.mp3`);
 
     let shownImages = [];
     let shownSounds = [];
 
-    const imageElement = document.getElementById("image1");
-
-    function getRandomImage() {
-      const remaining = images.filter(img => !shownImages.includes(img));
+    function getRandomItem(items, shownItems) {
+      const remaining = items.filter(item => !shownItems.includes(item));
       if (remaining.length === 0) {
-        shownImages = [];
-        return getRandomImage();
+        shownItems.length = 0;
+        return getRandomItem(items, shownItems);
       }
       const selected = remaining[Math.floor(Math.random() * remaining.length)];
-      shownImages.push(selected);
+      shownItems.push(selected);
       return selected;
     }
 
-    function getRandomSound() {
-      const remaining = sounds.filter(snd => !shownSounds.includes(snd));
-      if (remaining.length === 0) {
-        shownSounds = [];
-        return getRandomSound();
-      }
-      const selected = remaining[Math.floor(Math.random() * remaining.length)];
-      shownSounds.push(selected);
-      return selected;
-    }
-
-    imageElement.addEventListener("click", function () {
-      imageElement.src = getRandomImage();
-      const sound = new Audio(getRandomSound());
+    imageElement.addEventListener("click", () => {
+      imageElement.src = getRandomItem(images, shownImages);
+      const sound = new Audio(getRandomItem(sounds, shownSounds));
       sound.play();
     });
   </script>
+
 </body>
 </html>
