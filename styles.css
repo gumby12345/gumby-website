@@ -23,7 +23,7 @@ body {
 
 /* Image styling */
 .gallery img {
-    width: auto;  /* Set a starting size */
+    width: 300px;  /* Set a fixed width */
     height: auto;
     border: none;   /* Remove any borders */
     border-radius: 8px; /* Optional: rounded corners */
