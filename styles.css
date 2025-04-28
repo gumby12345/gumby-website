@@ -1,4 +1,4 @@
-/* Add styles for the gallery */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -21,5 +21,5 @@ h1 {
 }
 
 .gallery img {
-    width: 300px;  /* Set a fixed size */
+    width: 300px; 
     height: auto;
