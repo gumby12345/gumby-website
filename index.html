@@ -24,4 +24,22 @@
         const imageElement = document.getElementById("image1");
 
         // Function to randomly select an image from the array
-        function getRandomImage()
+        function getRandomImage() {
+            const randomIndex = Math.floor(Math.random() * images.length);
+            return images[randomIndex];
+        }
+
+        // On hover, change the image to a random one
+        imageElement.addEventListener('mouseenter', function() {
+            // Change image on hover
+            imageElement.src = getRandomImage();
+        });
+
+        // On mouse leave, keep the last image that was displayed
+        imageElement.addEventListener('mouseleave', function() {
+            // Keep the last image shown
+            // No need to change anything here, the last hovered image stays
+        });
+    </script>
+</body>
+</html>
