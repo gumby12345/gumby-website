@@ -1,120 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>gumby's house</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>gumby's house</title>
 
-    <!-- Favicon -->
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="images/favicon.png" type="image/png">
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="images/favicon.png" type="image/png">
 
-    <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <!-- Main Image Section -->
-    <div class="gallery">
-        <img id="image1" src="images/GUMBYWEBFIXED1.png" alt="Image 1">
-    </div>
 
-    <!-- Gallery Toggle Button -->
-    <div class="toggle-container">
-        <button id="toggleGallery">Switch Gallery</button>
-    </div>
+  <!-- Main Image Section -->
+  <div class="gallery">
+    <img id="image1" src="images/GUMBYWEBFIXED1.png" alt="Main Image" />
+  </div>
 
-    <!-- Art Gallery (Visible by default) -->
-    <div class="grid-container" id="galleryA">
-        <img src="https://iili.io/3WUuvXS.webp" alt="Art 1">
-        <img src="https://iili.io/3WUuGst.webp" alt="Art 2">
-        <img src="https://iili.io/3WUuR0g.webp" alt="Art 3">
-        <img src="https://iili.io/3WUuFfe.webp" alt="Art 4">
-        <img src="https://iili.io/3WUuJxS.webp" alt="Art 5">
-        <img src="https://iili.io/3WUu2s9.webp" alt="Art 6">
-        <img src="https://iili.io/3WUuobV.webp" alt="Art 7">
-    </div>
+  <!-- Gallery Toggle Button -->
+  <div class="toggle-container">
+    <button id="toggleGallery">Switch Gallery</button>
+  </div>
 
-    <!-- Cart Gallery (Hidden by default) -->
-    <div class="grid-container hidden" id="galleryB">
-        <img src="https://iili.io/3WUT6DN.webp" alt="Client Art 1">
-        <img src="https://iili.io/3WUTgHv.webp" alt="Client Art 2">
-        <img src="https://iili.io/3WUTrRR.webp" alt="Client Art 3">
-        <img src="https://iili.io/3WUTOV1.webp" alt="Client Art 4">
-        <img src="https://iili.io/3WUT8la.webp" alt="Client Art 5">
-        <img src="https://iili.io/3WUTWHx.webp" alt="Client Art 6">
-        <img src="https://iili.io/3WUTlV9.webp" alt="Client Art 7">
-        <img src="https://iili.io/3WUTNoP.webp" alt="Client Art 8">
-        <img src="https://iili.io/3WUT2cJ.webp" alt="Client Art 9">
-        <img src="https://iili.io/3WUTvKg.webp" alt="Client Art 10">
-        <img src="https://iili.io/3WUTEKu.webp" alt="Client Art 11">
-    </div>
+  <!-- Art Gallery (Visible by default) -->
+  <div class="grid-container" id="galleryA">
+    <img src="https://iili.io/3WUuvXS.webp" alt="Art 1">
+    <img src="https://iili.io/3WUuGst.webp" alt="Art 2">
+    <img src="https://iili.io/3WUuR0g.webp" alt="Art 3">
+    <img src="https://iili.io/3WUuFfe.webp" alt="Art 4">
+    <img src="https://iili.io/3WUuJxS.webp" alt="Art 5">
+    <img src="https://iili.io/3WUu2s9.webp" alt="Art 6">
+    <img src="https://iili.io/3WUuobV.webp" alt="Art 7">
+  </div>
 
-    <script>
-        // Image and Sound Logic
-        const images = [
-            "images/GUMBYWEBFIXED1.png",
-            "images/GUMBYWEBFIXED2.png",
-            "images/GUMBYLOGO3.png",
-            "images/GUMBYLOGO4.png",
-            "images/GUMBYLOGO2.png",
-            "images/GUMBYLOGO5.png",
-            "images/GUMBYLOGO6.png",
-            "images/GUMBYLOGO7.png",
-            "images/GUMBYLOGO8.png"
-        ];
+  <!-- Cart Gallery (Hidden by default) -->
+  <div class="grid-container hidden" id="galleryB">
+    <img src="https://iili.io/3WUT6DN.webp" alt="Client Art 1">
+    <img src="https://iili.io/3WUTgHv.webp" alt="Client Art 2">
+    <img src="https://iili.io/3WUTrRR.webp" alt="Client Art 3">
+    <img src="https://iili.io/3WUTOV1.webp" alt="Client Art 4">
+    <img src="https://iili.io/3WUT8la.webp" alt="Client Art 5">
+    <img src="https://iili.io/3WUTWHx.webp" alt="Client Art 6">
+    <img src="https://iili.io/3WUTlV9.webp" alt="Client Art 7">
+    <img src="https://iili.io/3WUTNoP.webp" alt="Client Art 8">
+    <img src="https://iili.io/3WUT2cJ.webp" alt="Client Art 9">
+    <img src="https://iili.io/3WUTvKg.webp" alt="Client Art 10">
+    <img src="https://iili.io/3WUTEKu.webp" alt="Client Art 11">
+  </div>
 
-        const sounds = [];
-        for (let i = 1; i <= 37; i++) {
-            sounds.push(`audio/sound${i}.mp3`);
-        }
+  <script>
+    // Toggle logic
+    const toggleButton = document.getElementById("toggleGallery");
+    const galleryA = document.getElementById("galleryA");
+    const galleryB = document.getElementById("galleryB");
 
-        const preloadImages = images.map(imgSrc => {
-            const img = new Image();
-            img.src = imgSrc;
-            return img;
-        });
+    toggleButton.addEventListener("click", () => {
+      galleryA.classList.toggle("hidden");
+      galleryB.classList.toggle("hidden");
+    });
+  </script>
 
-        let shownImages = [];
-        let shownSounds = [];
-
-        const imageElement = document.getElementById("image1");
-
-        function getRandomImage() {
-            const remaining = images.filter(img => !shownImages.includes(img));
-            if (remaining.length === 0) {
-                shownImages = [];
-                return getRandomImage();
-            }
-            const selected = remaining[Math.floor(Math.random() * remaining.length)];
-            shownImages.push(selected);
-            return selected;
-        }
-
-        function getRandomSound() {
-            const remaining = sounds.filter(snd => !shownSounds.includes(snd));
-            if (remaining.length === 0) {
-                shownSounds = [];
-                return getRandomSound();
-            }
-            const selected = remaining[Math.floor(Math.random() * remaining.length)];
-            shownSounds.push(selected);
-            return selected;
-        }
-
-        imageElement.addEventListener('click', function () {
-            imageElement.src = getRandomImage();
-            const sound = new Audio(getRandomSound());
-            sound.play();
-        });
-
-        // Toggle Gallery Visibility
-        const toggleButton = document.getElementById("toggleGallery");
-        const galleryA = document.getElementById("galleryA");
-        const galleryB = document.getElementById("galleryB");
-
-        toggleButton.addEventListener("click", () => {
-            galleryA.classList.toggle("hidden");
-            galleryB.classList.toggle("hidden");
-        });
-    </script>
 </body>
 </html>
