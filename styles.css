@@ -1,34 +1,26 @@
-/* Reset */
+/* Reset styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
-    padding: 0;
 }
 
-/* Main Image */
+/* Main image at the top */
 .gallery {
     display: flex;
     justify-content: center;
     margin-top: 40px;
 }
 
-.gallery img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Toggle Button */
+/* Toggle Button Styles */
 .toggle-container {
     text-align: center;
-    margin-top: 40px;
+    margin: 40px 0 20px;
 }
 
 .toggle-container button {
@@ -41,25 +33,28 @@ body {
     border-radius: 5px;
 }
 
-/* Grid Galleries */
+/* Gallery Grids Using Masonry Layout */
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin-top: 20px;
-    padding: 0 20px;
+    column-count: 2;
+    column-gap: 15px;
+    margin: 0 20px 40px;
 }
 
 .grid-container img {
     width: 100%;
     height: auto;
+    display: block;
+    margin-bottom: 15px;
+    break-inside: avoid;
     object-fit: cover;
     border: none;
-    box-shadow: none;
     border-radius: 0;
+    box-shadow: none;
 }
 
-/* Hidden class */
-.hidden {
-    display: none;
+/* Responsive Layout: 1 column on smaller screens */
+@media (max-width: 600px) {
+    .grid-container {
+        column-count: 1;
+    }
 }
