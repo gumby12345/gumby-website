@@ -34,7 +34,7 @@ body {
 
 /* Hover effect - image grows progressively bigger */
 .gallery img:hover {
-    transform: scale(1.5); /* Make the image grow larger when hovered */
+    transform: scale(1.25); /* Make the image grow larger when hovered */
     z-index: 1000; /* Make sure the image is on top */
     position: relative; /* Keep it in the normal flow */
 }
