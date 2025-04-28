@@ -54,18 +54,46 @@
 
   </main>
 
-  <!-- JavaScript -->
+  <!-- Masonry JS -->
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
   <script>
     const toggleButton = document.getElementById("toggleGallery");
     const galleryA = document.getElementById("galleryA");
     const galleryB = document.getElementById("galleryB");
     const imageElement = document.getElementById("image1");
 
+    // Initialize Masonry for both galleries
+    let masonryA = new Masonry(galleryA, {
+      itemSelector: 'img',
+      columnWidth: 'img',
+      percentPosition: true,
+      gutter: 16
+    });
+
+    let masonryB;
+
     toggleButton.addEventListener("click", () => {
       galleryA.classList.toggle("hidden");
       galleryB.classList.toggle("hidden");
+
+      // Trigger Masonry layout after toggling
+      if (!galleryA.classList.contains("hidden")) {
+        masonryA.layout();
+      } else {
+        if (!masonryB) {
+          masonryB = new Masonry(galleryB, {
+            itemSelector: 'img',
+            columnWidth: 'img',
+            percentPosition: true,
+            gutter: 16
+          });
+        } else {
+          masonryB.layout();
+        }
+      }
     });
 
+    // Image randomizer
     const images = [
       "images/GUMBYWEBFIXED1.png",
       "images/GUMBYWEBFIXED2.png",
@@ -79,7 +107,6 @@
     ];
 
     const sounds = Array.from({ length: 37 }, (_, i) => `audio/sound${i + 1}.mp3`);
-
     let shownImages = [];
     let shownSounds = [];
 
@@ -100,6 +127,5 @@
       sound.play();
     });
   </script>
-
 </body>
 </html>
