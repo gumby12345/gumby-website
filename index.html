@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,5 +55,52 @@
 
   </main>
 
-  <!-- Masonry JS -->
-  <script
+  <!-- JavaScript -->
+  <script>
+    const toggleButton = document.getElementById("toggleGallery");
+    const galleryA = document.getElementById("galleryA");
+    const galleryB = document.getElementById("galleryB");
+    const imageElement = document.getElementById("image1");
+
+    toggleButton.addEventListener("click", () => {
+      galleryA.classList.toggle("hidden");
+      galleryB.classList.toggle("hidden");
+    });
+
+    const images = [
+      "images/GUMBYWEBFIXED1.png",
+      "images/GUMBYWEBFIXED2.png",
+      "images/GUMBYLOGO3.png",
+      "images/GUMBYLOGO4.png",
+      "images/GUMBYLOGO2-.png",
+      "images/GUMBYLOGO5.png",
+      "images/GUMBYLOGO6.png",
+      "images/GUMBYLOGO7.png",
+      "images/GUMBYLOGO8.png"
+    ];
+
+    const sounds = Array.from({ length: 37 }, (_, i) => `audio/sound${i + 1}.mp3`);
+
+    let shownImages = [];
+    let shownSounds = [];
+
+    function getRandomItem(items, shownItems) {
+      const remaining = items.filter(item => !shownItems.includes(item));
+      if (remaining.length === 0) {
+        shownItems.length = 0;
+        return getRandomItem(items, shownItems);
+      }
+      const selected = remaining[Math.floor(Math.random() * remaining.length)];
+      shownItems.push(selected);
+      return selected;
+    }
+
+    imageElement.addEventListener("click", () => {
+      imageElement.src = getRandomItem(images, shownImages);
+      const sound = new Audio(getRandomItem(sounds, shownSounds));
+      sound.play();
+    });
+  </script>
+
+</body>
+</html>
