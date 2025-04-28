@@ -42,6 +42,7 @@ body {
   -webkit-overflow-scrolling: touch; /* Enable momentum scrolling on touch devices */
 }
 
+/* Make images responsive, fill the column */
 .grid-container img {
   width: 100%;
   height: auto;
@@ -60,4 +61,41 @@ body {
 /* Hide inactive gallery */
 .hidden {
   display: none;
+}
+
+/* Responsive Styles for Mobile */
+@media screen and (max-width: 768px) {
+  /* Stack the galleries into a single column on smaller screens */
+  .grid-container {
+    column-count: 1;
+    column-gap: 8px;
+    padding: 0 10px;
+  }
+
+  /* Adjust the toggle button size for smaller screens */
+  .toggle-container button {
+    font-size: 48px;
+  }
+
+  /* Adjust the main image section for mobile */
+  .gallery img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* For very small screens (portrait mode, small devices) */
+@media screen and (max-width: 480px) {
+  .gallery {
+    margin-top: 30px;
+  }
+
+  /* Even smaller button on tiny devices */
+  .toggle-container button {
+    font-size: 36px;
+  }
+
+  .grid-container {
+    height: 60vh; /* Slightly reduce the height of the gallery */
+  }
 }
