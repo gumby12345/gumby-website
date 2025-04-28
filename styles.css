@@ -18,15 +18,26 @@ body {
     flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
-    margin-top: 100px;  /* Adds space above the images */
+    margin-top: 100px;
 }
 
 /* Image styling */
 .gallery img {
-    width: auto;  /* Set a fixed width */
-    height: auto;
-    border: none;   /* Remove any borders */
-    border-radius: 8px; /* Optional: rounded corners */
-    box-shadow: none; /* Remove shadow */
-    cursor: pointer; /* Pointer cursor to indicate hover interaction */
+    max-width: 100%;  /* Responsive width */
+    height: auto;     /* Maintain aspect ratio */
+    border: none;
+    border-radius: 8px;
+    box-shadow: none;
+    transition: none;
+    cursor: pointer;
+    display: block;
+}
+
+/* Optional: tweak layout for smaller screens */
+@media (max-width: 600px) {
+    .gallery {
+        padding: 10px;
+        gap: 10px;
+        margin-top: 50px;
+    }
 }
