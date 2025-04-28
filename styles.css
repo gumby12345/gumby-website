@@ -17,19 +17,27 @@ body {
   margin-top: 60px;
 }
 
+.gallery img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* Toggle button styles */
 .toggle-container {
   text-align: center;
-  margin: 80px 0 30px; /* Increased top margin to push gallery lower */
+  margin: 80px 0 30px; /* Push gallery down */
 }
 
 .toggle-container button {
-  font-size: 72px; /* 3x larger */
+  font-size: 72px;
   background: none;
   border: none;
   cursor: pointer;
   color: #000;
   padding: 10px;
+  font-family: monospace, sans-serif;
+  font-feature-settings: "liga" 0, "calt" 0;
 }
 
 /* Shared gallery container with masonry-like layout */
@@ -39,14 +47,14 @@ body {
   padding: 20px;
 }
 
-/* Gallery images - optimized for column layout */
+/* Gallery images */
 .grid-container img {
   width: 100%;
   height: auto;
   object-fit: cover;
   display: block;
   margin-bottom: 10px;
-  break-inside: avoid; /* Prevents image breaks between columns */
+  break-inside: avoid;
 }
 
 /* Hide inactive gallery */
