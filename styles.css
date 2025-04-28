@@ -1,60 +1,64 @@
-/* Reset styles */
+/* Reset and base styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  padding: 0;
 }
 
-/* Main image at the top */
+/* Main Image */
 .gallery {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.gallery img {
+  max-width: 100%;
+  height: auto;
 }
 
 /* Toggle Button Styles */
 .toggle-container {
-    text-align: center;
-    margin: 40px 0 20px;
+  text-align: center;
+  margin: 30px 0;
 }
 
 .toggle-container button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
 }
 
-/* Gallery Grids Using Masonry Layout */
+/* Grid container for both galleries */
 .grid-container {
-    column-count: 2;
-    column-gap: 15px;
-    margin: 0 20px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
 }
 
+/* Image styles */
 .grid-container img {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin-bottom: 15px;
-    break-inside: avoid;
-    object-fit: cover;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
 }
 
-/* Responsive Layout: 1 column on smaller screens */
-@media (max-width: 600px) {
-    .grid-container {
-        column-count: 1;
+/* Utility class to hide sections */
+.hidden {
+  display: none !important;
+}
+
     }
 }
