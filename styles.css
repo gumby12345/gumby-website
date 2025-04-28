@@ -30,6 +30,7 @@ body {
   border: none;
   cursor: pointer;
   color: #000;
+  font-family: "Arial", sans-serif; /* Use a standard font to prevent emoji rendering */
 }
 
 /* Masonry-style galleries using columns */
