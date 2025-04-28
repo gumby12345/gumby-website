@@ -26,25 +26,22 @@ h1 {
     padding: 20px;
 }
 
+/* Image styling */
 .gallery img {
-    width: 300px;  /* Set a starting fixed size */
+    width: 300px;  /* Set a fixed size */
     height: auto;
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease; /* Smooth transition */
+    border: none;   /* Remove any borders */
+    border-radius: 8px; /* Optional: rounded corners */
+    box-shadow: none; /* Remove shadow */
+    transition: transform 0.3s ease; /* Smooth transition for scaling */
     cursor: pointer; /* Pointer cursor to indicate hover interaction */
 }
 
 /* Hover effect - image grows and fills the screen */
 .gallery img:hover {
-    transform: scale(2); /* Scale the image */
+    transform: scale(1.2); /* Scale the image moderately (to 120%) */
     z-index: 1000; /* Make sure the image is on top */
-    position: fixed; /* Position it fixed on the screen */
-    top: 0;
-    left: 0;
-    width: 100vw; /* Make image take the full width of the viewport */
-    height: 100vh; /* Make image take the full height of the viewport */
-    object-fit: cover; /* Ensure the image covers the screen without distortion */
+    position: relative; /* Keep it in the normal flow */
 }
+
 
