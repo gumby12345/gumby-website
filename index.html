@@ -11,9 +11,6 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
-
-  <!-- Preload click sound -->
-  <link rel="preload" as="audio" href="audio/click.mp3" type="audio/mpeg">
 </head>
 <body>
 
@@ -64,12 +61,9 @@
     const galleryB = document.getElementById("galleryB");
     const imageElement = document.getElementById("image1");
 
-    const clickSound = new Audio("audio/click.mp3");
-
     toggleButton.addEventListener("click", () => {
       galleryA.classList.toggle("hidden");
       galleryB.classList.toggle("hidden");
-      clickSound.play();
     });
 
     const images = [
@@ -81,19 +75,10 @@
       "images/GUMBYLOGO5.png",
       "images/GUMBYLOGO6.png",
       "images/GUMBYLOGO7.png",
-      "images/GUMBYLOGO8.png",
-      "images/GUMBYLOGO9.png",
-      "images/GUMBYLOGO10.png",
-      "images/GUMBYLOGO11.png",
-      "images/GUMBYLOGO12.png",
-      "images/GUMBYLOGO13.png",
-      "images/GUMBYLOGO14.png",
-      "images/GUMBYLOGO15.png",
-      "images/GUMBYLOGO16.png",
-      "images/GUMBYLOGO17.png"
+      "images/GUMBYLOGO8.png"
     ];
 
-    const sounds = Array.from({ length: 120 }, (_, i) => `audio/sound${i + 1}.mp3`);
+    const sounds = Array.from({ length: 37 }, (_, i) => `audio/sound${i + 1}.mp3`);
 
     let shownImages = [];
     let shownSounds = [];
