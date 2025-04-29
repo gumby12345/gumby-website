@@ -53,4 +53,59 @@ body::-webkit-scrollbar {
 
   /* Prevent emoji rendering */
   font-family: monospace, sans-serif;
-  font-feature-settings: "liga" 0
+  font-feature-settings: "liga" 0;
+}
+
+/* Gallery layout with columns */
+.grid-container {
+  column-count: 2;
+  column-gap: 10px;
+  padding: 20px;
+
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.grid-container::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+/* Gallery images */
+.grid-container img {
+  display: block;
+  width: 100%;            /* Fit the column width */
+  height: auto;
+  object-fit: contain;    /* Avoid distortion */
+  margin-bottom: 10px;
+  break-inside: avoid;    /* Prevent image breaks in columns */
+}
+
+/* Hide inactive gallery */
+.hidden {
+  display: none;
+}
+
+/* Responsive: stack gallery into 1 column on small screens */
+@media screen and (max-width: 768px) {
+  .grid-container {
+    column-count: 1;
+  }
+
+  .toggle-container button {
+    font-size: 48px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .gallery {
+    margin-top: 30px;
+  }
+
+  .toggle-container button {
+    font-size: 36px;
+  }
+}
