@@ -6,12 +6,17 @@
 }
 
 html, body {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
 
-  /* Hide scrollbars globally */
+  /* Smooth scroll for all devices */
+  scroll-behavior: smooth;
+  
+  /* Momentum scrolling on mobile */
+  -webkit-overflow-scrolling: touch; /* For iOS */
+  overflow-x: hidden;
+  
+  /* Hide scrollbars */
   scrollbar-width: none;       /* Firefox */
   -ms-overflow-style: none;    /* IE/Edge */
 }
@@ -19,21 +24,14 @@ html, body {
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
   width: 0;
-  background: transparent;     /* Chrome/Safari */
+  background: transparent; /* For Chrome/Safari */
 }
 
-/* Full-page momentum scroll wrapper */
+/* Enable smooth scrolling for the entire body and main */
 .scroll-wrapper {
   height: 100vh;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch; /* Momentum on iOS */
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-}
-
-.scroll-wrapper::-webkit-scrollbar {
-  width: 0;
-  background: transparent;
+  overflow-y: scroll; /* Vertical scrolling with momentum */
+  scroll-snap-type: y mandatory; /* Optional: adds snap to sections */
 }
 
 /* Center main image */
@@ -66,59 +64,24 @@ body::-webkit-scrollbar {
 
   /* Prevent emoji rendering */
   font-family: monospace, sans-serif;
-  font-feature-settings: "liga" 0;
 }
 
-/* Gallery layout with columns */
+/* Grid for images */
 .grid-container {
-  column-count: 2;
-  column-gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
   padding: 20px;
-
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-
-  scrollbar-width: none;
-  -ms-overflow-style: none;
 }
 
-.grid-container::-webkit-scrollbar {
-  width: 0;
-  background: transparent;
-}
-
-/* Gallery images */
 .grid-container img {
-  display: block;
   width: 100%;
   height: auto;
-  object-fit: contain;
-  margin-bottom: 10px;
-  break-inside: avoid;
+  object-fit: cover;
+  display: block;
 }
 
 /* Hide inactive gallery */
 .hidden {
   display: none;
-}
-
-/* Responsive: stack gallery into 1 column on small screens */
-@media screen and (max-width: 768px) {
-  .grid-container {
-    column-count: 1;
-  }
-
-  .toggle-container button {
-    font-size: 48px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .gallery {
-    margin-top: 30px;
-  }
-
-  .toggle-container button {
-    font-size: 36px;
-  }
 }
