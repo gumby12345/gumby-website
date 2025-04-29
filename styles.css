@@ -30,36 +30,36 @@ body {
 
 /* Toggle button styles */
 .toggle-container {
-  text-align: center;
-  margin: 80px 0 30px; /* Push gallery down */
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 80px 0 30px;
 }
 
 .toggle-container button {
-  font-size: 36px;  /* Smaller font size */
+  font-size: 20px;
+  letter-spacing: -0.5px;
   background: none;
   border: none;
   cursor: pointer;
   color: #000;
-  padding: 10px 30px; /* Increase horizontal padding to make buttons more spaced out */
+  padding: 10px 20px;
   font-family: monospace, sans-serif;
   font-feature-settings: "liga" 0, "calt" 0;
-  letter-spacing: 2px; /* Tighten the kerning */
-  transition: all 0.3s ease; /* Smooth transition for scaling and color */
-  margin: 0 30px; /* Add space between buttons */
+  transition: all 0.2s ease;
 }
 
 /* Active button */
 .toggle-container button.active {
-  font-size: 36px;
+  font-size: 24px;
   color: #000;
-  cursor: pointer;
 }
 
 /* Inactive button */
 .toggle-container button.inactive {
   color: #bbb;
-  font-size: 32px; /* Make the inactive button font even smaller */
-  cursor: not-allowed;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 /* Shared gallery container with masonry-like layout */
@@ -90,8 +90,12 @@ body {
     column-count: 1;
   }
 
+  .toggle-container {
+    gap: 20px;
+  }
+
   .toggle-container button {
-    font-size: 48px;
+    font-size: 18px;
   }
 }
 
@@ -100,7 +104,11 @@ body {
     margin-top: 30px;
   }
 
+  .toggle-container {
+    gap: 10px;
+  }
+
   .toggle-container button {
-    font-size: 36px;
+    font-size: 16px;
   }
 }
