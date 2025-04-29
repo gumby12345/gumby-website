@@ -30,6 +30,11 @@ body {
   transition: transform 0.2s ease;
 }
 
+/* macOS-specific styling */
+body.macOS #image1 {
+  max-width: 90%; /* Slightly smaller size for Mac */
+}
+
 /* Toggle button styles */
 .toggle-container {
   display: flex;
