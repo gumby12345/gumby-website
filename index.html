@@ -7,12 +7,6 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="preload" as="audio" href="audio/click.mp3" type="audio/mpeg">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon"> <!-- Favicon Link -->
-  <script>
-    // Detect macOS and add a class to the body
-    if (navigator.platform.toUpperCase().indexOf('MAC') >= 0) {
-      document.body.classList.add('macOS');
-    }
-  </script>
 </head>
 <body>
   <main>
@@ -53,6 +47,12 @@
   </main>
 
   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (/Mac/i.test(navigator.platform)) {
+        document.body.classList.add("macOS");
+      }
+    });
+
     const imageElement = document.getElementById("image1");
     const btnA = document.getElementById("btnA");
     const btnB = document.getElementById("btnB");
