@@ -5,11 +5,9 @@
   box-sizing: border-box;
 }
 
-html, body {
+body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
-  overflow-x: hidden; /* Prevent horizontal scroll */
-  scroll-behavior: smooth; /* Smooth scrolling */
 }
 
 /* Center main image */
@@ -42,16 +40,20 @@ html, body {
 
   /* Prevent emoji rendering */
   font-family: monospace, sans-serif;
+  font-feature-settings: "liga" 0;
 }
 
-/* Grid for images */
+/* Gallery Grid Layout */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(2, 1fr); /* Two equal columns */
   gap: 10px;
   padding: 20px;
+  justify-items: center;  /* Centers items horizontally */
+  align-items: center;    /* Centers items vertically */
 }
 
+/* Images in gallery */
 .grid-container img {
   width: 100%;
   height: auto;
