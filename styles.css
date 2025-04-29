@@ -21,13 +21,17 @@ body {
   max-width: 100%;
   height: auto;
   display: block;
-  cursor: pointer; /* Clickable */
+}
+
+/* Make main image look clickable */
+#image1 {
+  cursor: pointer;
 }
 
 /* Toggle button styles */
 .toggle-container {
   text-align: center;
-  margin: 80px 0 30px;
+  margin: 80px 0 30px; /* Push gallery down */
 }
 
 .toggle-container button {
@@ -37,31 +41,49 @@ body {
   cursor: pointer;
   color: #000;
   padding: 10px;
-
-  /* Prevent emoji rendering */
   font-family: monospace, sans-serif;
-  font-feature-settings: "liga" 0;
+  font-feature-settings: "liga" 0, "calt" 0;
 }
 
-/* Gallery Grid Layout */
+/* Shared gallery container with masonry-like layout */
 .grid-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two equal columns */
-  gap: 10px;
+  column-count: 2;
+  column-gap: 10px;
   padding: 20px;
-  justify-items: center;  /* Centers items horizontally */
-  align-items: center;    /* Centers items vertically */
 }
 
-/* Images in gallery */
+/* Gallery images */
 .grid-container img {
   width: 100%;
   height: auto;
   object-fit: cover;
   display: block;
+  margin-bottom: 10px;
+  break-inside: avoid;
 }
 
 /* Hide inactive gallery */
 .hidden {
   display: none;
+}
+
+/* Responsive tweaks */
+@media screen and (max-width: 768px) {
+  .grid-container {
+    column-count: 1;
+  }
+
+  .toggle-container button {
+    font-size: 48px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .gallery {
+    margin-top: 30px;
+  }
+
+  .toggle-container button {
+    font-size: 36px;
+  }
 }
