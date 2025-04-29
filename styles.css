@@ -7,12 +7,23 @@
 
 html, body {
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* Enable momentum on iOS */
+  overflow-x: hidden;
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
-  overflow-x: hidden;
+
+  /* Hide scrollbars globally */
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE/Edge */
 }
 
-/* Main image section */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0;
+  background: transparent;     /* Chrome/Safari */
+}
+
+/* Center main image */
 .gallery {
   display: flex;
   justify-content: center;
@@ -23,7 +34,7 @@ html, body {
   max-width: 100%;
   height: auto;
   display: block;
-  cursor: pointer;
+  cursor: pointer; /* Clickable */
 }
 
 /* Toggle button styles */
@@ -40,32 +51,6 @@ html, body {
   color: #000;
   padding: 10px;
 
-  /* Prevent emoji styling on mobile */
+  /* Prevent emoji rendering */
   font-family: monospace, sans-serif;
-  font-feature-settings: "liga" 0, "calt" 0;
-}
-
-/* Gallery layout */
-.grid-container {
-  column-count: 2;
-  column-gap: 10px;
-  padding: 20px;
-
-  /* Scrolling + momentum */
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-
-  /* Hide scrollbars */
-  scrollbar-width: none;       /* Firefox */
-  -ms-overflow-style: none;    /* IE/Edge */
-}
-
-.grid-container::-webkit-scrollbar {
-  display: none;               /* Chrome, Safari */
-}
-
-/* Gallery images */
-.grid-container img {
-  width: 100%;
-  height: auto;
-  object-fit
+  font-feature-settings: "liga" 0
