@@ -23,6 +23,11 @@ body {
   display: block;
 }
 
+/* Make main image look clickable */
+#image1 {
+  cursor: pointer;
+}
+
 /* Toggle button styles */
 .toggle-container {
   text-align: center;
