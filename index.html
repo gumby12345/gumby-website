@@ -5,32 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>gumby's house</title>
 
-  <!-- Favicon -->
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="icon" href="images/favicon.png" type="image/png">
 
-  <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
-
-  <!-- Preload click sound -->
   <link rel="preload" as="audio" href="audio/click.mp3" type="audio/mpeg">
 </head>
 <body>
 
   <main>
 
-    <!-- Main Image Section -->
     <section class="gallery">
       <img id="image1" src="images/GUMBYWEBFIXED1.png" alt="Main Image">
     </section>
 
-    <!-- Toggle Buttons -->
     <div class="toggle-container">
-      <button id="personalWorkButton" aria-label="Show Personal Work">Personal Work</button>
-      <button id="clientWorkButton" aria-label="Show Client Work" class="inactive">Client Work</button>
+      <button id="btnA" class="active">Personal Work</button>
+      <button id="btnB">Client Work</button>
     </div>
 
-    <!-- Gallery A -->
     <section class="grid-container" id="galleryA">
       <img src="https://iili.io/3WUuvXS.webp" alt="Art 1">
       <img src="https://iili.io/3WUuGst.webp" alt="Art 2">
@@ -41,7 +34,6 @@
       <img src="https://iili.io/3WUuobV.webp" alt="Art 7">
     </section>
 
-    <!-- Gallery B -->
     <section class="grid-container hidden" id="galleryB">
       <img src="https://iili.io/3WUT6DN.webp" alt="Client Art 1">
       <img src="https://iili.io/3WUTgHv.webp" alt="Client Art 2">
@@ -58,62 +50,22 @@
 
   </main>
 
-  <!-- JavaScript -->
   <script>
-    const personalWorkButton = document.getElementById("personalWorkButton");
-    const clientWorkButton = document.getElementById("clientWorkButton");
+    const imageElement = document.getElementById("image1");
+    const btnA = document.getElementById("btnA");
+    const btnB = document.getElementById("btnB");
     const galleryA = document.getElementById("galleryA");
     const galleryB = document.getElementById("galleryB");
-    const imageElement = document.getElementById("image1");
 
     const clickSound = new Audio("audio/click.mp3");
 
-    // Initial setup: Show gallery A and hide gallery B
-    galleryA.classList.remove("hidden");
-    galleryB.classList.add("hidden");
-
-    // Function to update the button styles
-    function updateButtonStyles(activeButton, inactiveButton) {
-      activeButton.classList.remove("inactive");
-      inactiveButton.classList.add("inactive");
-    }
-
-    // Show Personal Work (Gallery A) when Personal Work button is clicked
-    personalWorkButton.addEventListener("click", () => {
-      galleryA.classList.remove("hidden");
-      galleryB.classList.add("hidden");
-      updateButtonStyles(personalWorkButton, clientWorkButton);
-      clickSound.play(); // Play sound on click
-    });
-
-    // Show Client Work (Gallery B) when Client Work button is clicked
-    clientWorkButton.addEventListener("click", () => {
-      galleryA.classList.add("hidden");
-      galleryB.classList.remove("hidden");
-      updateButtonStyles(clientWorkButton, personalWorkButton);
-      clickSound.play(); // Play sound on click
-    });
-
-    // Array of images and sounds for the main image
     const images = [
-      "images/GUMBYWEBFIXED1.png",
-      "images/GUMBYWEBFIXED2.png",
-      "images/GUMBYLOGO3.png",
-      "images/GUMBYLOGO4.png",
-      "images/GUMBYLOGO2-.png",
-      "images/GUMBYLOGO5.png",
-      "images/GUMBYLOGO6.png",
-      "images/GUMBYLOGO7.png",
-      "images/GUMBYLOGO8.png",
-      "images/GUMBYLOGO9.png",
-      "images/GUMBYLOGO10.png",
-      "images/GUMBYLOGO11.png",
-      "images/GUMBYLOGO12.png",
-      "images/GUMBYLOGO13.png",
-      "images/GUMBYLOGO14.png",
-      "images/GUMBYLOGO15.png",
-      "images/GUMBYLOGO16.png",
-      "images/GUMBYLOGO17.png"
+      "images/GUMBYWEBFIXED1.png", "images/GUMBYWEBFIXED2.png", "images/GUMBYLOGO3.png",
+      "images/GUMBYLOGO4.png", "images/GUMBYLOGO2-.png", "images/GUMBYLOGO5.png",
+      "images/GUMBYLOGO6.png", "images/GUMBYLOGO7.png", "images/GUMBYLOGO8.png",
+      "images/GUMBYLOGO9.png", "images/GUMBYLOGO10.png", "images/GUMBYLOGO11.png",
+      "images/GUMBYLOGO12.png", "images/GUMBYLOGO13.png", "images/GUMBYLOGO14.png",
+      "images/GUMBYLOGO15.png", "images/GUMBYLOGO16.png", "images/GUMBYLOGO17.png"
     ];
 
     const sounds = Array.from({ length: 120 }, (_, i) => `audio/sound${i + 1}.mp3`);
@@ -121,7 +73,6 @@
     let shownImages = [];
     let shownSounds = [];
 
-    // Function to get a random image and sound
     function getRandomItem(items, shownItems) {
       const remaining = items.filter(item => !shownItems.includes(item));
       if (remaining.length === 0) {
@@ -133,16 +84,32 @@
       return selected;
     }
 
-    // Update the main image and play sound when clicked
     imageElement.addEventListener("click", () => {
       imageElement.src = getRandomItem(images, shownImages);
       const sound = new Audio(getRandomItem(sounds, shownSounds));
       sound.play();
+
+      imageElement.classList.remove("jiggle");
+      imageElement.style.removeProperty('--jiggle-angle');
+      clearInterval(jiggleInterval);
+      startJiggleTimer();
     });
 
-    // Set initial button states
-    updateButtonStyles(personalWorkButton, clientWorkButton);
-  </script>
+    btnA.addEventListener("click", () => {
+      galleryA.classList.remove("hidden");
+      galleryB.classList.add("hidden");
+      btnA.classList.add("active");
+      btnB.classList.remove("active");
+      clickSound.play();
+    });
 
-</body>
-</html>
+    btnB.addEventListener("click", () => {
+      galleryB.classList.remove("hidden");
+      galleryA.classList.add("hidden");
+      btnB.classList.add("active");
+      btnA.classList.remove("active");
+      clickSound.play();
+    });
+
+    let jiggleTimeout;
+   
