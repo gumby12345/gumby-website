@@ -43,6 +43,14 @@ body {
   padding: 10px;
   font-family: monospace, sans-serif;
   font-feature-settings: "liga" 0, "calt" 0;
+  transition: all 0.3s ease; /* Smooth transition for scaling and color */
+}
+
+/* Styles for the inactive button */
+.inactive {
+  color: #bbb;
+  font-size: 60px; /* Make the inactive button smaller */
+  cursor: not-allowed;
 }
 
 /* Shared gallery container with masonry-like layout */
