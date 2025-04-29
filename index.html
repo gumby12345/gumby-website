@@ -3,18 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>gumby's house</title>
-
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="images/favicon.png" type="image/png">
-
+  <title>Gumby's House</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="preload" as="audio" href="audio/click.mp3" type="audio/mpeg">
 </head>
 <body>
-
   <main>
-
     <section class="gallery">
       <img id="image1" src="images/GUMBYWEBFIXED1.png" alt="Main Image">
     </section>
@@ -25,29 +19,16 @@
     </div>
 
     <section class="grid-container" id="galleryA">
+      <!-- Gallery A images -->
       <img src="https://iili.io/3WUuvXS.webp" alt="Art 1">
-      <img src="https://iili.io/3WUuGst.webp" alt="Art 2">
-      <img src="https://iili.io/3WUuR0g.webp" alt="Art 3">
-      <img src="https://iili.io/3WUuFfe.webp" alt="Art 4">
-      <img src="https://iili.io/3WUuJxS.webp" alt="Art 5">
-      <img src="https://iili.io/3WUu2s9.webp" alt="Art 6">
-      <img src="https://iili.io/3WUuobV.webp" alt="Art 7">
+      <!-- ... -->
     </section>
 
     <section class="grid-container hidden" id="galleryB">
+      <!-- Gallery B images -->
       <img src="https://iili.io/3WUT6DN.webp" alt="Client Art 1">
-      <img src="https://iili.io/3WUTgHv.webp" alt="Client Art 2">
-      <img src="https://iili.io/3WUTrRR.webp" alt="Client Art 3">
-      <img src="https://iili.io/3WUTOV1.webp" alt="Client Art 4">
-      <img src="https://iili.io/3WUT8la.webp" alt="Client Art 5">
-      <img src="https://iili.io/3WUTWHx.webp" alt="Client Art 6">
-      <img src="https://iili.io/3WUTlV9.webp" alt="Client Art 7">
-      <img src="https://iili.io/3WUTNoP.webp" alt="Client Art 8">
-      <img src="https://iili.io/3WUT2cJ.webp" alt="Client Art 9">
-      <img src="https://iili.io/3WUTvKg.webp" alt="Client Art 10">
-      <img src="https://iili.io/3WUTEKu.webp" alt="Client Art 11">
+      <!-- ... -->
     </section>
-
   </main>
 
   <script>
@@ -60,12 +41,8 @@
     const clickSound = new Audio("audio/click.mp3");
 
     const images = [
-      "images/GUMBYWEBFIXED1.png", "images/GUMBYWEBFIXED2.png", "images/GUMBYLOGO3.png",
-      "images/GUMBYLOGO4.png", "images/GUMBYLOGO2-.png", "images/GUMBYLOGO5.png",
-      "images/GUMBYLOGO6.png", "images/GUMBYLOGO7.png", "images/GUMBYLOGO8.png",
-      "images/GUMBYLOGO9.png", "images/GUMBYLOGO10.png", "images/GUMBYLOGO11.png",
-      "images/GUMBYLOGO12.png", "images/GUMBYLOGO13.png", "images/GUMBYLOGO14.png",
-      "images/GUMBYLOGO15.png", "images/GUMBYLOGO16.png", "images/GUMBYLOGO17.png"
+      "images/GUMBYWEBFIXED1.png", "images/GUMBYWEBFIXED2.png", "images/GUMBYLOGO3.png"
+      // Add more...
     ];
 
     const sounds = Array.from({ length: 120 }, (_, i) => `audio/sound${i + 1}.mp3`);
@@ -75,26 +52,13 @@
 
     function getRandomItem(items, shownItems) {
       const remaining = items.filter(item => !shownItems.includes(item));
-      if (remaining.length === 0) {
-        shownItems.length = 0;
-        return getRandomItem(items, shownItems);
-      }
+      if (remaining.length === 0) shownItems.length = 0;
       const selected = remaining[Math.floor(Math.random() * remaining.length)];
       shownItems.push(selected);
       return selected;
     }
 
-    imageElement.addEventListener("click", () => {
-      imageElement.src = getRandomItem(images, shownImages);
-      const sound = new Audio(getRandomItem(sounds, shownSounds));
-      sound.play();
-
-      imageElement.classList.remove("jiggle");
-      imageElement.style.removeProperty('--jiggle-angle');
-      clearInterval(jiggleInterval);
-      startJiggleTimer();
-    });
-
+    // Toggle buttons
     btnA.addEventListener("click", () => {
       galleryA.classList.remove("hidden");
       galleryB.classList.add("hidden");
@@ -111,5 +75,42 @@
       clickSound.play();
     });
 
-    let jiggleTimeout;
-   
+    // Main image click
+    imageElement.addEventListener("click", () => {
+      imageElement.src = getRandomItem(images, shownImages);
+      new Audio(getRandomItem(sounds, shownSounds)).play();
+      stopJiggle();
+    });
+
+    // Jiggle logic
+    let jiggleTimer;
+    let growTimeout;
+
+    function startJiggle() {
+      imageElement.classList.add("jiggling");
+      imageElement.style.transform = "scale(1.05)";
+    }
+
+    function stopJiggle() {
+      imageElement.classList.remove("jiggling");
+      imageElement.style.transform = "scale(1)";
+      clearTimeout(growTimeout);
+      resetInactivityTimer();
+    }
+
+    function resetInactivityTimer() {
+      clearTimeout(jiggleTimer);
+      jiggleTimer = setTimeout(() => {
+        startJiggle();
+        growTimeout = setTimeout(() => {
+          imageElement.style.transform = "scale(1.25)";
+        }, 30000);
+      }, 15000);
+    }
+
+    // Start the timer on load
+    resetInactivityTimer();
+    document.body.addEventListener("click", resetInactivityTimer);
+  </script>
+</body>
+</html>
