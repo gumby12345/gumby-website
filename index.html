@@ -1,103 +1,155 @@
-const imageElement = document.getElementById("image1");
-const btnA = document.getElementById("btnA");
-const btnB = document.getElementById("btnB");
-const galleryA = document.getElementById("galleryA");
-const galleryB = document.getElementById("galleryB");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>gumby's house</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preload" as="audio" href="audio/click.mp3" type="audio/mpeg">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon"> <!-- Favicon Link -->
+</head>
+<body>
+  <main>
+    <section class="gallery">
+      <img id="image1" src="images/GUMBYWEBFIXED1.png" alt="Main Image">
+    </section>
 
-const clickSound = new Audio("audio/click.mp3");
+    <div class="toggle-container">
+      <button id="btnA" class="active">Personal Work</button>
+      <button id="btnB">Client Work</button>
+    </div>
 
-const images = [
-  "images/GUMBYWEBFIXED1.png", 
-  "images/GUMBYWEBFIXED2.png", 
-  "images/GUMBYLOGO3.png",
-  "images/GUMBYLOGO4.png", 
-  "images/GUMBYLOGO2-.png", // Check if this image exists
-  "images/GUMBYLOGO5.png", 
-  "images/GUMBYLOGO6.png", 
-  "images/GUMBYLOGO7.png", 
-  "images/GUMBYLOGO8.png",
-  "images/GUMBYLOGO9.png", 
-  "images/GUMBYLOGO10.png", 
-  "images/GUMBYLOGO11.png",
-  "images/GUMBYLOGO12.png", 
-  "images/GUMBYLOGO13.png", 
-  "images/GUMBYLOGO14.png",
-  "images/GUMBYLOGO15.png", 
-  "images/GUMBYLOGO16.png", 
-  "images/GUMBYLOGO17.png"
-];
+    <section class="grid-container" id="galleryA">
+      <!-- Gallery A images -->
+      <img src="https://iili.io/3WUuvXS.webp" alt="Art 1">
+      <img src="https://iili.io/3WUuGst.webp" alt="Art 2">
+      <img src="https://iili.io/3WUuR0g.webp" alt="Art 3">
+      <img src="https://iili.io/3WUuFfe.webp" alt="Art 4">
+      <img src="https://iili.io/3WUuJxS.webp" alt="Art 5">
+      <img src="https://iili.io/3WUu2s9.webp" alt="Art 6">
+      <img src="https://iili.io/3WUuobV.webp" alt="Art 7">
+    </section>
 
-const sounds = Array.from({ length: 120 }, (_, i) => `audio/sound${i + 1}.mp3`);
+    <section class="grid-container hidden" id="galleryB">
+      <!-- Gallery B images -->
+      <img src="https://iili.io/3WUT6DN.webp" alt="Client Art 1">
+      <img src="https://iili.io/3WUTgHv.webp" alt="Client Art 2">
+      <img src="https://iili.io/3WUTrRR.webp" alt="Client Art 3">
+      <img src="https://iili.io/3WUTOV1.webp" alt="Client Art 4">
+      <img src="https://iili.io/3WUT8la.webp" alt="Client Art 5">
+      <img src="https://iili.io/3WUTWHx.webp" alt="Client Art 6">
+      <img src="https://iili.io/3WUTlV9.webp" alt="Client Art 7">
+      <img src="https://iili.io/3WUTNoP.webp" alt="Client Art 8">
+      <img src="https://iili.io/3WUT2cJ.webp" alt="Client Art 9">
+      <img src="https://iili.io/3WUTvKg.webp" alt="Client Art 10">
+      <img src="https://iili.io/3WUTEKu.webp" alt="Client Art 11">
+    </section>
+  </main>
 
-let shownImages = [];
-let shownSounds = [];
+  <script>
+    const imageElement = document.getElementById("image1");
+    const btnA = document.getElementById("btnA");
+    const btnB = document.getElementById("btnB");
+    const galleryA = document.getElementById("galleryA");
+    const galleryB = document.getElementById("galleryB");
 
-function getRandomItem(items, shownItems) {
-  const remaining = items.filter(item => !shownItems.includes(item));
-  if (remaining.length === 0) shownItems.length = 0;
-  const selected = remaining[Math.floor(Math.random() * remaining.length)];
-  shownItems.push(selected);
-  return selected;
-}
+    const clickSound = new Audio("audio/click.mp3");
 
-// Toggle buttons
-btnA.addEventListener("click", () => {
-  galleryA.classList.remove("hidden");
-  galleryB.classList.add("hidden");
-  btnA.classList.add("active");
-  btnB.classList.remove("active");
-  clickSound.play();
-});
+    const images = [
+      "images/GUMBYWEBFIXED1.png", 
+      "images/GUMBYWEBFIXED2.png", 
+      "images/GUMBYLOGO3.png",
+      "images/GUMBYLOGO4.png", 
+      "images/GUMBYLOGO2-.png", 
+      "images/GUMBYLOGO5.png", 
+      "images/GUMBYLOGO6.png", 
+      "images/GUMBYLOGO7.png", 
+      "images/GUMBYLOGO8.png",
+      "images/GUMBYLOGO9.png", 
+      "images/GUMBYLOGO10.png", 
+      "images/GUMBYLOGO11.png",
+      "images/GUMBYLOGO12.png", 
+      "images/GUMBYLOGO13.png", 
+      "images/GUMBYLOGO14.png",
+      "images/GUMBYLOGO15.png", 
+      "images/GUMBYLOGO16.png", 
+      "images/GUMBYLOGO17.png"
+    ];
 
-btnB.addEventListener("click", () => {
-  galleryB.classList.remove("hidden");
-  galleryA.classList.add("hidden");
-  btnB.classList.add("active");
-  btnA.classList.remove("active");
-  clickSound.play();
-});
+    const sounds = Array.from({ length: 120 }, (_, i) => `audio/sound${i + 1}.mp3`);
 
-// Main image click
-imageElement.addEventListener("click", () => {
-  const newImage = getRandomItem(images, shownImages);
-  imageElement.src = newImage;
+    let shownImages = [];
+    let shownSounds = [];
 
-  // Add an error handler in case the image fails to load
-  imageElement.onerror = function() {
-    console.log(`Error loading image: ${newImage}. Falling back to default image.`);
-    imageElement.src = "images/GUMBYWEBFIXED1.png";  // Set fallback image
-  };
+    function getRandomItem(items, shownItems) {
+      const remaining = items.filter(item => !shownItems.includes(item));
+      if (remaining.length === 0) shownItems.length = 0;
+      const selected = remaining[Math.floor(Math.random() * remaining.length)];
+      shownItems.push(selected);
+      return selected;
+    }
 
-  new Audio(getRandomItem(sounds, shownSounds)).play();
-  stopJiggle();
-});
+    // Toggle buttons
+    btnA.addEventListener("click", () => {
+      galleryA.classList.remove("hidden");
+      galleryB.classList.add("hidden");
+      btnA.classList.add("active");
+      btnB.classList.remove("active");
+      clickSound.play();
+    });
 
-// Jiggle logic
-let jiggleTimer;
-let growTimeout;
+    btnB.addEventListener("click", () => {
+      galleryB.classList.remove("hidden");
+      galleryA.classList.add("hidden");
+      btnB.classList.add("active");
+      btnA.classList.remove("active");
+      clickSound.play();
+    });
 
-function startJiggle() {
-  imageElement.classList.add("jiggling");
-  imageElement.style.transform = "scale(1.05)";
-}
+    // Main image click
+    imageElement.addEventListener("click", () => {
+      const newImage = getRandomItem(images, shownImages);
+      imageElement.src = newImage;
 
-function stopJiggle() {
-  imageElement.classList.remove("jiggling");
-  imageElement.style.transform = "scale(1)";
-  clearTimeout(growTimeout);
-  resetInactivityTimer();
-}
+      // Add an error handler in case the image fails to load
+      imageElement.onerror = function() {
+        console.log(`Error loading image: ${newImage}. Falling back to default image.`);
+        imageElement.src = "images/GUMBYWEBFIXED1.png";  // Set fallback image
+      };
 
-function resetInactivityTimer() {
-  clearTimeout(jiggleTimer);
-  jiggleTimer = setTimeout(() => {
-    startJiggle();
-    growTimeout = setTimeout(() => {
-      imageElement.style.transform = "scale(1.25)";
-    }, 30000);
-  }, 15000);
-}
+      new Audio(getRandomItem(sounds, shownSounds)).play();
+      stopJiggle();
+    });
 
-// Start the timer on load
-resetInactivityTimer();
-document.body.addEventListener("click", resetInactivityTimer);
+    // Jiggle logic
+    let jiggleTimer;
+    let growTimeout;
+
+    function startJiggle() {
+      imageElement.classList.add("jiggling");
+      imageElement.style.transform = "scale(1.05)";
+    }
+
+    function stopJiggle() {
+      imageElement.classList.remove("jiggling");
+      imageElement.style.transform = "scale(1)";
+      clearTimeout(growTimeout);
+      resetInactivityTimer();
+    }
+
+    function resetInactivityTimer() {
+      clearTimeout(jiggleTimer);
+      jiggleTimer = setTimeout(() => {
+        startJiggle();
+        growTimeout = setTimeout(() => {
+          imageElement.style.transform = "scale(1.25)";
+        }, 30000);
+      }, 15000);
+    }
+
+    // Start the timer on load
+    resetInactivityTimer();
+    document.body.addEventListener("click", resetInactivityTimer);
+  </script>
+</body>
+</html>
