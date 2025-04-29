@@ -35,21 +35,30 @@ body {
 }
 
 .toggle-container button {
-  font-size: 72px;
+  font-size: 36px;  /* Smaller font size */
   background: none;
   border: none;
   cursor: pointer;
   color: #000;
-  padding: 10px;
+  padding: 10px 30px; /* Increase horizontal padding to make buttons more spaced out */
   font-family: monospace, sans-serif;
   font-feature-settings: "liga" 0, "calt" 0;
+  letter-spacing: 2px; /* Tighten the kerning */
   transition: all 0.3s ease; /* Smooth transition for scaling and color */
+  margin: 0 30px; /* Add space between buttons */
 }
 
-/* Styles for the inactive button */
-.inactive {
+/* Active button */
+.toggle-container button.active {
+  font-size: 36px;
+  color: #000;
+  cursor: pointer;
+}
+
+/* Inactive button */
+.toggle-container button.inactive {
   color: #bbb;
-  font-size: 60px; /* Make the inactive button smaller */
+  font-size: 32px; /* Make the inactive button font even smaller */
   cursor: not-allowed;
 }
 
