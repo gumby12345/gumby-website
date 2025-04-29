@@ -1,3 +1,11 @@
+/* Import custom font */
+@font-face {
+  font-family: 'AppleGaramond';
+  src: url('fonts/AppleGaramond-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
 /* Reset and base styles */
 * {
   margin: 0;
@@ -28,37 +36,31 @@ body {
   cursor: pointer;
 }
 
-/* Toggle button styles */
+/* Toggle button container */
 .toggle-container {
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 60px;
   margin: 80px 0 30px;
 }
 
+/* Style for both buttons */
 .toggle-container button {
-  font-size: 20px;
+  font-family: 'AppleGaramond', sans-serif;
+  font-size: 28px;
   letter-spacing: -0.5px;
   background: none;
   border: none;
   cursor: pointer;
   color: #000;
   padding: 10px 20px;
-  font-family: monospace, sans-serif;
-  font-feature-settings: "liga" 0, "calt" 0;
-  transition: all 0.2s ease;
+  transition: all 0.2s ease-in-out;
 }
 
-/* Active button */
-.toggle-container button.active {
-  font-size: 24px;
-  color: #000;
-}
-
-/* Inactive button */
+/* Inactive button appearance */
 .toggle-container button.inactive {
-  color: #bbb;
-  font-size: 20px;
+  opacity: 0.5;
+  transform: scale(0.95);
   cursor: pointer;
 }
 
@@ -69,7 +71,6 @@ body {
   padding: 20px;
 }
 
-/* Gallery images */
 .grid-container img {
   width: 100%;
   height: auto;
@@ -91,11 +92,12 @@ body {
   }
 
   .toggle-container {
+    flex-direction: column;
     gap: 20px;
   }
 
   .toggle-container button {
-    font-size: 18px;
+    font-size: 24px;
   }
 }
 
@@ -104,11 +106,7 @@ body {
     margin-top: 30px;
   }
 
-  .toggle-container {
-    gap: 10px;
-  }
-
   .toggle-container button {
-    font-size: 16px;
+    font-size: 20px;
   }
 }
