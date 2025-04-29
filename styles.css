@@ -1,4 +1,3 @@
-
 /* Reset and base styles */
 * {
   margin: 0;
@@ -6,12 +5,9 @@
   box-sizing: border-box;
 }
 
-html, body {
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch; /* Momentum scrolling on iOS */
+body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
-  overflow-x: hidden;
 }
 
 /* Center main image */
@@ -25,11 +21,7 @@ html, body {
   max-width: 100%;
   height: auto;
   display: block;
-}
-
-/* Make main image look clickable */
-#image1 {
-  cursor: pointer;
+  cursor: pointer; /* Clickable */
 }
 
 /* Toggle button styles */
@@ -46,63 +38,30 @@ html, body {
   color: #000;
   padding: 10px;
 
-  /* Prevent emoji styling on mobile */
+  /* Prevent emoji rendering */
   font-family: monospace, sans-serif;
-  font-feature-settings: "liga" 0, "calt" 0;
+  font-feature-settings: "liga" 0;
 }
 
-/* Gallery container with 2-column masonry-style layout */
+/* Gallery Grid Layout */
 .grid-container {
-  column-count: 2;
-  column-gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+  gap: 10px;
   padding: 20px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  justify-items: center;  /* Centers items horizontally */
+  align-items: center;    /* Centers items vertically */
 }
 
-/* Gallery images */
+/* Images in gallery */
 .grid-container img {
   width: 100%;
   height: auto;
   object-fit: cover;
   display: block;
-  margin-bottom: 10px;
-  break-inside: avoid;
-}
-
-/* Hide scrollbars */
-.grid-container::-webkit-scrollbar,
-body::-webkit-scrollbar {
-  display: none;
-}
-
-.grid-container {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
 }
 
 /* Hide inactive gallery */
 .hidden {
   display: none;
-}
-
-/* Responsive: single column on smaller screens */
-@media screen and (max-width: 768px) {
-  .grid-container {
-    column-count: 1;
-  }
-
-  .toggle-container button {
-    font-size: 48px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .gallery {
-    margin-top: 30px;
-  }
-
-  .toggle-container button {
-    font-size: 36px;
-  }
 }
