@@ -32,7 +32,7 @@ body {
 
 /* macOS-specific styling */
 body.macOS #image1 {
-  max-width: 90%; /* Slightly smaller size for Mac */
+  max-width: 75%; /* Slightly smaller size for Mac */
 }
 
 /* Toggle button styles */
