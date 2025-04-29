@@ -24,10 +24,10 @@
       <img id="image1" src="images/GUMBYWEBFIXED1.png" alt="Main Image">
     </section>
 
-    <!-- Toggle Buttons -->
+    <!-- Toggle Button -->
     <div class="toggle-container">
-      <button id="personalWorkButton" aria-label="Show Personal Work">PERSONAL WORK</button>
-      <button id="clientWorkButton" aria-label="Show Client Work">CLIENT WORK</button>
+      <button id="personalWorkButton" aria-label="Show Personal Work">Personal Work</button>
+      <button id="clientWorkButton" aria-label="Show Client Work" class="inactive">Client Work</button>
     </div>
 
     <!-- Gallery A -->
@@ -72,10 +72,17 @@
     galleryA.classList.remove("hidden");
     galleryB.classList.add("hidden");
 
+    // Function to update button styles: highlight the clicked button and gray out the other
+    function updateButtonStyles(activeButton, inactiveButton) {
+      activeButton.classList.remove("inactive");
+      inactiveButton.classList.add("inactive");
+    }
+
     // Show Personal Work (Gallery A) when Personal Work button is clicked
     personalWorkButton.addEventListener("click", () => {
       galleryA.classList.remove("hidden");
       galleryB.classList.add("hidden");
+      updateButtonStyles(personalWorkButton, clientWorkButton);
       clickSound.play(); // Play sound on click
     });
 
@@ -83,51 +90,12 @@
     clientWorkButton.addEventListener("click", () => {
       galleryA.classList.add("hidden");
       galleryB.classList.remove("hidden");
+      updateButtonStyles(clientWorkButton, personalWorkButton);
       clickSound.play(); // Play sound on click
     });
 
-    const images = [
-      "images/GUMBYWEBFIXED1.png",
-      "images/GUMBYWEBFIXED2.png",
-      "images/GUMBYLOGO3.png",
-      "images/GUMBYLOGO4.png",
-      "images/GUMBYLOGO2-.png",
-      "images/GUMBYLOGO5.png",
-      "images/GUMBYLOGO6.png",
-      "images/GUMBYLOGO7.png",
-      "images/GUMBYLOGO8.png",
-      "images/GUMBYLOGO9.png",
-      "images/GUMBYLOGO10.png",
-      "images/GUMBYLOGO11.png",
-      "images/GUMBYLOGO12.png",
-      "images/GUMBYLOGO13.png",
-      "images/GUMBYLOGO14.png",
-      "images/GUMBYLOGO15.png",
-      "images/GUMBYLOGO16.png",
-      "images/GUMBYLOGO17.png"
-    ];
-
-    const sounds = Array.from({ length: 120 }, (_, i) => `audio/sound${i + 1}.mp3`);
-
-    let shownImages = [];
-    let shownSounds = [];
-
-    function getRandomItem(items, shownItems) {
-      const remaining = items.filter(item => !shownItems.includes(item));
-      if (remaining.length === 0) {
-        shownItems.length = 0;
-        return getRandomItem(items, shownItems);
-      }
-      const selected = remaining[Math.floor(Math.random() * remaining.length)];
-      shownItems.push(selected);
-      return selected;
-    }
-
-    imageElement.addEventListener("click", () => {
-      imageElement.src = getRandomItem(images, shownImages);
-      const sound = new Audio(getRandomItem(sounds, shownSounds));
-      sound.play();
-    });
+    // Initially, make the "Client Work" button inactive and grayed out
+    updateButtonStyles(personalWorkButton, clientWorkButton);
   </script>
 
 </body>
