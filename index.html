@@ -24,9 +24,10 @@
       <img id="image1" src="images/GUMBYWEBFIXED1.png" alt="Main Image">
     </section>
 
-    <!-- Toggle Button -->
+    <!-- Toggle Buttons -->
     <div class="toggle-container">
-      <button id="toggleGallery" aria-label="Toggle Gallery View">☺</button>
+      <button id="personalWorkButton" aria-label="Show Personal Work">PERSONAL WORK</button>
+      <button id="clientWorkButton" aria-label="Show Client Work">CLIENT WORK</button>
     </div>
 
     <!-- Gallery A -->
@@ -59,17 +60,30 @@
 
   <!-- JavaScript -->
   <script>
-    const toggleButton = document.getElementById("toggleGallery");
+    const personalWorkButton = document.getElementById("personalWorkButton");
+    const clientWorkButton = document.getElementById("clientWorkButton");
     const galleryA = document.getElementById("galleryA");
     const galleryB = document.getElementById("galleryB");
     const imageElement = document.getElementById("image1");
 
     const clickSound = new Audio("audio/click.mp3");
 
-    toggleButton.addEventListener("click", () => {
-      galleryA.classList.toggle("hidden");
-      galleryB.classList.toggle("hidden");
-      clickSound.play();
+    // Initially show personal work (Gallery A) and hide client work (Gallery B)
+    galleryA.classList.remove("hidden");
+    galleryB.classList.add("hidden");
+
+    // Show Personal Work (Gallery A) when Personal Work button is clicked
+    personalWorkButton.addEventListener("click", () => {
+      galleryA.classList.remove("hidden");
+      galleryB.classList.add("hidden");
+      clickSound.play(); // Play sound on click
+    });
+
+    // Show Client Work (Gallery B) when Client Work button is clicked
+    clientWorkButton.addEventListener("click", () => {
+      galleryA.classList.add("hidden");
+      galleryB.classList.remove("hidden");
+      clickSound.play(); // Play sound on click
     });
 
     const images = [
