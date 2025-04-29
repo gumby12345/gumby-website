@@ -8,30 +8,8 @@
 html, body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
-
-  /* Smooth scroll for all devices */
-  scroll-behavior: smooth;
-  
-  /* Momentum scrolling on mobile */
-  -webkit-overflow-scrolling: touch; /* For iOS */
-  overflow-x: hidden;
-  
-  /* Hide scrollbars */
-  scrollbar-width: none;       /* Firefox */
-  -ms-overflow-style: none;    /* IE/Edge */
-}
-
-html::-webkit-scrollbar,
-body::-webkit-scrollbar {
-  width: 0;
-  background: transparent; /* For Chrome/Safari */
-}
-
-/* Enable smooth scrolling for the entire body and main */
-.scroll-wrapper {
-  height: 100vh;
-  overflow-y: scroll; /* Vertical scrolling with momentum */
-  scroll-snap-type: y mandatory; /* Optional: adds snap to sections */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  scroll-behavior: smooth; /* Smooth scrolling */
 }
 
 /* Center main image */
