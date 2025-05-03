@@ -9,6 +9,12 @@
   <link rel="icon" href="images/favicon.ico" type="image/x-icon"> <!-- Favicon Link -->
 </head>
 <body>
+  <div class="instagram-icon">
+    <a href="https://www.instagram.com/gumb_y/" target="_blank">
+      <img id="instagram-image" src="images/instagram.webp" alt="Instagram Icon">
+    </a>
+  </div>
+
   <main>
     <section class="gallery">
       <img id="image1" src="images/GUMBYWEBFIXED1.png" alt="Main Image">
@@ -163,6 +169,18 @@
     // Start the timer on load
     resetInactivityTimer();
     document.body.addEventListener("click", resetInactivityTimer);
+
+    // Instagram Icon Click Logic
+    const instagramImage = document.getElementById("instagram-image");
+    const instagramSound = new Audio("audio/instagramsound.mp3");
+
+    instagramImage.addEventListener("click", (event) => {
+      event.preventDefault(); // Prevent immediate navigation
+      instagramSound.play(); // Play sound
+      instagramSound.onended = () => {
+        window.open("https://www.instagram.com/gumb_y/", "_blank"); // Navigate to Instagram after sound finishes
+      };
+    });
   </script>
 </body>
 </html>
