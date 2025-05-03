@@ -53,7 +53,7 @@
     </section>
 
     <!-- Instagram Icon -->
-    <a href="https://www.instagram.com/gumb_y/" target="_blank">
+    <a href="https://www.instagram.com/gumb_y/" target="_blank" id="instagram-link">
       <img id="instagram-icon" src="images/instagram.webp" alt="Instagram">
     </a>
   </main>
@@ -168,11 +168,12 @@
     }
 
     // Instagram icon click
-    instagramIcon.addEventListener("click", (e) => {
+    const instagramLink = document.getElementById("instagram-link");
+    instagramLink.addEventListener("click", (e) => {
       e.preventDefault(); // Prevent default anchor action
-      instagramSound.play();
+      instagramSound.play(); // Play the Instagram sound
       setTimeout(() => {
-        window.open(instagramIcon.href, '_blank'); // Open link after sound
+        window.location.href = "https://www.instagram.com/gumb_y/"; // Redirect after sound
       }, 500); // Adjust timing to match sound length
     });
 
