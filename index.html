@@ -9,12 +9,6 @@
   <link rel="icon" href="images/favicon.ico" type="image/x-icon"> <!-- Favicon Link -->
 </head>
 <body>
-  <div class="instagram-icon">
-    <a href="https://www.instagram.com/gumb_y/" target="_blank">
-      <img id="instagram-image" src="images/instagram.webp" alt="Instagram Icon">
-    </a>
-  </div>
-
   <main>
     <section class="gallery">
       <img id="image1" src="images/GUMBYWEBFIXED1.png" alt="Main Image">
@@ -57,6 +51,11 @@
         <img src="https://iili.io/3jOtyhJ.webp" alt="Client Art 15">
       </a>
     </section>
+
+    <!-- Instagram Icon -->
+    <a href="https://www.instagram.com/gumb_y/" target="_blank">
+      <img id="instagram-icon" src="images/instagram.webp" alt="Instagram">
+    </a>
   </main>
 
   <script>
@@ -71,8 +70,10 @@
     const btnB = document.getElementById("btnB");
     const galleryA = document.getElementById("galleryA");
     const galleryB = document.getElementById("galleryB");
+    const instagramIcon = document.getElementById("instagram-icon");
 
     const clickSound = new Audio("audio/click.mp3");
+    const instagramSound = new Audio("audio/instagramsound.mp3");
 
     const images = [
       "images/GUMBYWEBFIXED1.webp", 
@@ -166,21 +167,18 @@
       }, 15000);
     }
 
+    // Instagram icon click
+    instagramIcon.addEventListener("click", (e) => {
+      e.preventDefault(); // Prevent default anchor action
+      instagramSound.play();
+      setTimeout(() => {
+        window.open(instagramIcon.href, '_blank'); // Open link after sound
+      }, 500); // Adjust timing to match sound length
+    });
+
     // Start the timer on load
     resetInactivityTimer();
     document.body.addEventListener("click", resetInactivityTimer);
-
-    // Instagram Icon Click Logic
-    const instagramImage = document.getElementById("instagram-image");
-    const instagramSound = new Audio("audio/instagramsound.mp3");
-
-    instagramImage.addEventListener("click", (event) => {
-      event.preventDefault(); // Prevent immediate navigation
-      instagramSound.play(); // Play sound
-      instagramSound.onended = () => {
-        window.open("https://www.instagram.com/gumb_y/", "_blank"); // Navigate to Instagram after sound finishes
-      };
-    });
   </script>
 </body>
 </html>
