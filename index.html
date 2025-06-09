@@ -1,17 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>gumby's house</title>
-  <link rel="stylesheet" href="https://gumby.rodeo/styles.css" />
-  <link rel="preload" as="audio" href="https://gumby.rodeo/audio/click.mp3" type="audio/mpeg">
-  <link rel="icon" href="https://gumby.rodeo/images/favicon.ico" type="image/x-icon"> <!-- Favicon Link -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preload" as="audio" href="audio/click.mp3" type="audio/mpeg">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon"> <!-- Favicon Link -->
 </head>
 <body>
   <main>
     <section class="gallery">
-      <img id="image1" src="https://gumby.rodeo/images/GUMBYWEBFIXED1.png" alt="Main Image">
+      <img id="image1" src="images/GUMBYWEBFIXED1.png" alt="Main Image">
     </section>
 
     <div class="toggle-container">
@@ -60,7 +61,7 @@
 
     <!-- Instagram Icon -->
     <a href="https://www.instagram.com/gumb_y/" target="_blank" id="instagram-link">
-      <img id="instagram-icon" src="https://gumby.rodeo/images/instagram.webp" alt="Instagram">
+      <img id="instagram-icon" src="images/instagram.webp" alt="Instagram">
     </a>
   </main>
 
@@ -78,31 +79,31 @@
     const galleryB = document.getElementById("galleryB");
     const instagramIcon = document.getElementById("instagram-icon");
 
-    const clickSound = new Audio("https://gumby.rodeo/audio/click.mp3");
-    const instagramSound = new Audio("https://gumby.rodeo/audio/instagramsound.mp3");
+    const clickSound = new Audio("audio/click.mp3");
+    const instagramSound = new Audio("audio/instagramsound.mp3");
 
     const images = [
-      "https://gumby.rodeo/images/GUMBYWEBFIXED1.webp", 
-      "https://gumby.rodeo/images/GUMBYWEBFIXED2.webp", 
-      "https://gumby.rodeo/images/GUMBYLOGO3.webp",
-      "https://gumby.rodeo/images/GUMBYLOGO4.webp", 
-      "https://gumby.rodeo/images/GUMBYLOGO2-.webp", 
-      "https://gumby.rodeo/images/GUMBYLOGO5.webp", 
-      "https://gumby.rodeo/images/GUMBYLOGO6.webp", 
-      "https://gumby.rodeo/images/GUMBYLOGO7.webp", 
-      "https://gumby.rodeo/images/GUMBYLOGO8.webp",
-      "https://gumby.rodeo/images/GUMBYLOGO9.webp", 
-      "https://gumby.rodeo/images/GUMBYLOGO10.webp", 
-      "https://gumby.rodeo/images/GUMBYLOGO11.webp",
-      "https://gumby.rodeo/images/GUMBYLOGO12.webp", 
-      "https://gumby.rodeo/images/GUMBYLOGO13.webp", 
-      "https://gumby.rodeo/images/GUMBYLOGO14.webp",
-      "https://gumby.rodeo/images/GUMBYLOGO15.webp", 
-      "https://gumby.rodeo/images/GUMBYLOGO16.webp", 
-      "https://gumby.rodeo/images/GUMBYLOGO17.webp"
+      "images/GUMBYWEBFIXED1.webp", 
+      "images/GUMBYWEBFIXED2.webp", 
+      "images/GUMBYLOGO3.webp",
+      "images/GUMBYLOGO4.webp", 
+      "images/GUMBYLOGO2-.webp", 
+      "images/GUMBYLOGO5.webp", 
+      "images/GUMBYLOGO6.webp", 
+      "images/GUMBYLOGO7.webp", 
+      "images/GUMBYLOGO8.webp",
+      "images/GUMBYLOGO9.webp", 
+      "images/GUMBYLOGO10.webp", 
+      "images/GUMBYLOGO11.webp",
+      "images/GUMBYLOGO12.webp", 
+      "images/GUMBYLOGO13.webp", 
+      "images/GUMBYLOGO14.webp",
+      "images/GUMBYLOGO15.webp", 
+      "images/GUMBYLOGO16.webp", 
+      "images/GUMBYLOGO17.webp"
     ];
 
-    const sounds = Array.from({ length: 120 }, (_, i) => `https://gumby.rodeo/audio/sound${i + 1}.mp3`);
+    const sounds = Array.from({ length: 120 }, (_, i) => `audio/sound${i + 1}.mp3`);
 
     let shownImages = [];
     let shownSounds = [];
@@ -140,7 +141,7 @@
       // Add an error handler in case the image fails to load
       imageElement.onerror = function() {
         console.log(`Error loading image: ${newImage}. Falling back to default image.`);
-        imageElement.src = "https://gumby.rodeo/images/GUMBYWEBFIXED1.png";  // Set fallback image
+        imageElement.src = "images/GUMBYWEBFIXED1.png";  // Set fallback image
       };
 
       new Audio(getRandomItem(sounds, shownSounds)).play();
