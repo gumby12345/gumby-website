@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: "AppleGaramondLight";
   src: url("fonts/AppleGaramond-Light.ttf") format("truetype");
@@ -14,6 +13,7 @@
 body {
   font-family: AppleGaramondLight, Arial, sans-serif;
   background-color: #FEFFEC;
+  color: #000; /* Ensures text is always black */
 }
 
 /* Center main image */
@@ -55,6 +55,7 @@ body.macOS #image1 {
   transition: all 0.3s ease;
   opacity: 0.4;
   transform: scale(0.9);
+  color: #000; /* Ensures text is always black */
 }
 
 .toggle-container button.active {
@@ -110,4 +111,3 @@ body.macOS #image1 {
   animation: jiggle 0.2s infinite;
   transition: transform 30s linear;
 }
-</style>
