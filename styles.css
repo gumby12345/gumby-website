@@ -1,6 +1,6 @@
 @font-face {
   font-family: "AppleGaramondLight";
-  src: url("fonts/AppleGaramond-Light.ttf") format("truetype");
+  src: url("https://yourdomain.com/fonts/AppleGaramond-Light.ttf") format("truetype");
 }
 
 /* Reset and base styles */
