@@ -1,6 +1,7 @@
+
 @font-face {
   font-family: "AppleGaramondLight";
-  src: url("https://gumby.rodeo/fonts/AppleGaramond-Light.ttf") format("truetype");
+  src: url("fonts/AppleGaramond-Light.ttf") format("truetype");
 }
 
 /* Reset and base styles */
