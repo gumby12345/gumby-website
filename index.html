@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,7 +76,6 @@
     const btnB = document.getElementById("btnB");
     const galleryA = document.getElementById("galleryA");
     const galleryB = document.getElementById("galleryB");
-    const instagramIcon = document.getElementById("instagram-icon");
 
     const clickSound = new Audio("audio/click.mp3");
     const instagramSound = new Audio("audio/instagramsound.mp3");
@@ -112,15 +112,12 @@
       "images/GUMBYLOGO28.webp"
     ];
 
-    const sounds = Array.from({ length: 120 }, (_, i) => audio/sound${i + 1}.mp3);
-
     let shownImages = [];
-    let shownSounds = [];
 
     function getRandomItem(items, shownItems) {
       const weights = items.map(item => item.includes("GUMBYLOGO28.webp") ? 0.02 : 1);
       const remaining = items.filter(item => !shownItems.includes(item));
-      if (remaining.length === 0) shownItems.length = 0;
+      if (remaining.length === 0) shownItems.length = 0; // Reset shown items when all are shown.
 
       const remainingWeights = remaining.map(item => weights[items.indexOf(item)]);
       const totalWeight = remainingWeights.reduce((sum, weight) => sum + weight, 0);
@@ -137,7 +134,18 @@
       }
     }
 
-    // Toggle buttons
+    imageElement.addEventListener("click", () => {
+      const newImage = getRandomItem(images, shownImages);
+      imageElement.src = newImage;
+
+      imageElement.onerror = function() {
+        console.error(`Error loading image: ${newImage}. Falling back to default image.`);
+        imageElement.src = "images/GUMBYWEBFIXED1.png";
+      };
+
+      clickSound.play();
+    });
+
     btnA.addEventListener("click", () => {
       galleryA.classList.remove("hidden");
       galleryB.classList.add("hidden");
@@ -153,57 +161,6 @@
       btnA.classList.remove("active");
       clickSound.play();
     });
-
-    // Main image click
-    imageElement.addEventListener("click", () => {
-      const newImage = getRandomItem(images, shownImages);
-      imageElement.src = newImage;
-
-      imageElement.onerror = function() {
-        console.log(Error loading image: ${newImage}. Falling back to default image.);
-        imageElement.src = "images/GUMBYWEBFIXED1.png";
-      };
-
-      new Audio(getRandomItem(sounds, shownSounds)).play();
-      stopJiggle();
-    });
-
-    let jiggleTimer;
-    let growTimeout;
-
-    function startJiggle() {
-      imageElement.classList.add("jiggling");
-      imageElement.style.transform = "scale(1.05)";
-    }
-
-    function stopJiggle() {
-      imageElement.classList.remove("jiggling");
-      imageElement.style.transform = "scale(1)";
-      clearTimeout(growTimeout);
-      resetInactivityTimer();
-    }
-
-    function resetInactivityTimer() {
-      clearTimeout(jiggleTimer);
-      jiggleTimer = setTimeout(() => {
-        startJiggle();
-        growTimeout = setTimeout(() => {
-          imageElement.style.transform = "scale(1.25)";
-        }, 30000);
-      }, 15000);
-    }
-
-    const instagramLink = document.getElementById("instagram-link");
-    instagramLink.addEventListener("click", (e) => {
-      e.preventDefault();
-      instagramSound.play();
-      setTimeout(() => {
-        window.open("https://www.instagram.com/gumb_y/", "_blank");
-      }, 500);
-    });
-
-    resetInactivityTimer();
-    document.body.addEventListener("click", resetInactivityTimer);
   </script>
 </body>
 </html>
