@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +37,6 @@
       <!-- Gallery B images -->
       <img src="https://iili.io/FFz7419.webp" alt="Client Art 1">
       <img src="https://iili.io/FFz7s5b.webp" alt="Client Art 2">
-     <!-- <img src="https://iili.io/FFz7idu.webp" alt="Client Art 3"> -->
       <img src="https://iili.io/FFz7rq7.webp" alt="Client Art 4">
       <img src="https://iili.io/FFz7bLB.webp" alt="Client Art 5">
       <img src="https://iili.io/FFz7pqP.webp" alt="Client Art 6">
@@ -110,7 +108,8 @@
       "images/GUMBYLOGO24.webp",
       "images/GUMBYLOGO25.webp",
       "images/GUMBYLOGO26.webp",
-      "images/GUMBYLOGO27.webp"
+      "images/GUMBYLOGO27.webp",
+      "images/paul2.webp"
     ];
 
     const sounds = Array.from({ length: 120 }, (_, i) => `audio/sound${i + 1}.mp3`);
@@ -119,11 +118,23 @@
     let shownSounds = [];
 
     function getRandomItem(items, shownItems) {
+      const weights = items.map(item => item.includes("paul2") ? 0.05 : 1);
       const remaining = items.filter(item => !shownItems.includes(item));
       if (remaining.length === 0) shownItems.length = 0;
-      const selected = remaining[Math.floor(Math.random() * remaining.length)];
-      shownItems.push(selected);
-      return selected;
+
+      const remainingWeights = remaining.map(item => weights[items.indexOf(item)]);
+      const totalWeight = remainingWeights.reduce((sum, weight) => sum + weight, 0);
+      const normalizedWeights = remainingWeights.map(weight => weight / totalWeight);
+
+      let cumulativeWeight = 0;
+      const random = Math.random();
+      for (let i = 0; i < remaining.length; i++) {
+        cumulativeWeight += normalizedWeights[i];
+        if (random < cumulativeWeight) {
+          shownItems.push(remaining[i]);
+          return remaining[i];
+        }
+      }
     }
 
     // Toggle buttons
@@ -148,17 +159,15 @@
       const newImage = getRandomItem(images, shownImages);
       imageElement.src = newImage;
 
-      // Add an error handler in case the image fails to load
       imageElement.onerror = function() {
         console.log(`Error loading image: ${newImage}. Falling back to default image.`);
-        imageElement.src = "images/GUMBYWEBFIXED1.png";  // Set fallback image
+        imageElement.src = "images/GUMBYWEBFIXED1.png";
       };
 
       new Audio(getRandomItem(sounds, shownSounds)).play();
       stopJiggle();
     });
 
-    // Jiggle logic
     let jiggleTimer;
     let growTimeout;
 
@@ -184,17 +193,15 @@
       }, 15000);
     }
 
-    // Instagram icon click
     const instagramLink = document.getElementById("instagram-link");
     instagramLink.addEventListener("click", (e) => {
-      e.preventDefault(); // Prevent default anchor action
-      instagramSound.play(); // Play the Instagram sound
+      e.preventDefault();
+      instagramSound.play();
       setTimeout(() => {
-        window.open("https://www.instagram.com/gumb_y/", "_blank"); // Open in a new tab
-      }, 500); // Adjust timing to match sound length
+        window.open("https://www.instagram.com/gumb_y/", "_blank");
+      }, 500);
     });
 
-    // Start the timer on load
     resetInactivityTimer();
     document.body.addEventListener("click", resetInactivityTimer);
   </script>
