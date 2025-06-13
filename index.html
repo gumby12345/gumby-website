@@ -109,7 +109,7 @@
       "images/GUMBYLOGO25.webp",
       "images/GUMBYLOGO26.webp",
       "images/GUMBYLOGO27.webp",
-      "images/paul2.webp"
+      "images/GUMBYLOGO28.webp"
     ];
 
     const sounds = Array.from({ length: 120 }, (_, i) => `audio/sound${i + 1}.mp3`);
@@ -118,7 +118,7 @@
     let shownSounds = [];
 
     function getRandomItem(items, shownItems) {
-      const weights = items.map(item => item.includes("paul2") ? 0.01 : 1);
+      const weights = items.map(item => item.includes("GUMBYLOGO28.webp") ? 0.02 : 1);
       const remaining = items.filter(item => !shownItems.includes(item));
       if (remaining.length === 0) shownItems.length = 0;
 
