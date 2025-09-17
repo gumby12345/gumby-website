@@ -77,10 +77,23 @@
   </main>
 
   <script>
+    function shuffleGallery(galleryId) {
+      const gallery = document.getElementById(galleryId);
+      const items = Array.from(gallery.children);
+      for (let i = items.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [items[i], items[j]] = [items[j], items[i]];
+      }
+      items.forEach(item => gallery.appendChild(item));
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
       if (/Mac/i.test(navigator.platform)) {
         document.body.classList.add("macOS");
       }
+
+      shuffleGallery('galleryA');
+      shuffleGallery('galleryB');
     });
 
     const imageElement = document.getElementById("image1");
