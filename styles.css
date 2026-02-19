@@ -84,17 +84,26 @@ body.macOS #image1 {
   display: none !important;
 }
 
-/* Sorcerer-specific masonry */
+//* Sorcerer masonry using CSS Grid */
 #galleryC {
-  column-count: 3;
-  column-gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* responsive columns */
+  grid-auto-rows: 10px; /* small row height for masonry effect */
+  gap: 10px;
   padding: 20px;
 }
 
-#galleryC img.middle {
-  column-span: all; /* spans all columns */
+#galleryC img {
   width: 100%;
-  margin-bottom: 20px;
+  display: block;
+  object-fit: cover;
+  border-radius: 0; /* optional */
+}
+
+/* Full-width middle image */
+#galleryC img.middle {
+  grid-column: 1 / -1; /* span all columns */
+  grid-row: span 20; /* span more rows to make it taller */
 }
 
 /* ========================= */
