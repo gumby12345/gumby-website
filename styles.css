@@ -100,8 +100,8 @@ body.macOS #image1 {
 
 /* Full-width middle image */
 #galleryC img.middle {
-  grid-column: 1 / -1; /* spans all columns */
-  grid-row: span 2;     /* makes it taller than the rest */
+  grid-column: 1 / -1;  /* spans all columns */
+  grid-row: 3 / span 2; /* starts at row 3, spans 2 rows */
 }
 
 
