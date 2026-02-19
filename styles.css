@@ -84,15 +84,11 @@ body.macOS #image1 {
   display: none !important;
 }
 
-/* ========================= */
-/* SORCERER GRID LAYOUT */
-/* ========================= */
-
 #galleryC {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns */
-  grid-auto-rows: auto; /* rows adjust to content */
-  gap: 10px; /* spacing between images */
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: auto;
+  gap: 10px;
   padding: 20px;
 }
 
@@ -104,14 +100,11 @@ body.macOS #image1 {
   break-inside: avoid;
 }
 
-/* Middle image full-width, centered visually */
+/* Middle image spans full width at the top */
 #galleryC img.middle {
   grid-column: 1 / -1; /* spans all columns */
-  grid-row-start: 4;   /* starts on row 4 (adjust as needed) */
-  margin-top: 60px;    /* pushes it down further from the top */
+  margin-bottom: 20px;  /* spacing below the middle image */
 }
-
-
 
 /* ========================= */
 /* Instagram */
