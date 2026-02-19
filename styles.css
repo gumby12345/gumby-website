@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "AppleGaramondLight";
-  src: url("fonts/AppleGaramond-Light.ttf") format("truetype");
+  font-family: "YoungSerifBold";
+  src: url("fonts/YOUNGSERIF-BOLD.OTF") format("opentype");
 }
 
 /* Reset */
@@ -11,7 +11,7 @@
 }
 
 body {
-  font-family: AppleGaramondLight, Arial, sans-serif;
+  font-family: YoungSerifBold, Arial, sans-serif;
   background-color: #FEFFEC;
   color: #000;
 }
@@ -48,7 +48,7 @@ body.macOS #image1 {
   background: none;
   border: none;
   padding: 10px 20px;
-  font-family: AppleGaramondLight, Arial, sans-serif;
+  font-family: YoungSerifBold, Arial, sans-serif;
   letter-spacing: -0.5px;
   cursor: pointer;
   transition: all 0.3s ease;
