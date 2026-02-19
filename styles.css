@@ -113,6 +113,10 @@ body.macOS #image1 {
   transition: transform 30s linear;
 }
 
+#galleryC.grid-container {
+  column-count: unset;
+}
+
 #galleryC {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
