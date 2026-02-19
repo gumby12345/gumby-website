@@ -107,26 +107,17 @@
       if (/Mac/i.test(navigator.platform)) document.body.classList.add("macOS");
       shuffleGallery('galleryB');
 
-      // Add fallback for broken images
-      replaceBrokenImages(".grid-container");
-      replaceBrokenImages(".gallery");
-    });
-
-    function replaceBrokenImages(containerSelector) {
-      const imgs = document.querySelectorAll(containerSelector + " img");
-      imgs.forEach(img => {
+      // Add fallback for broken images in all galleries & main
+      const allImages = document.querySelectorAll("img");
+      allImages.forEach(img => {
         img.onerror = () => {
           img.onerror = null;
           img.src = "images/GUMBYWEBFIXED1.png";
         };
       });
-    }
+    });
 
     const imageElement = document.getElementById("image1");
-    imageElement.onerror = () => {
-      imageElement.onerror = null;
-      imageElement.src = "images/GUMBYWEBFIXED1.png";
-    };
 
     const btnA = document.getElementById("btnA");
     const btnB = document.getElementById("btnB");
@@ -197,6 +188,11 @@
     imageElement.addEventListener("click", () => {
       const newImage = getRandomItem(images, shownImages);
       imageElement.src = newImage;
+      // Safety fallback if random image fails
+      imageElement.onerror = () => {
+        imageElement.onerror = null;
+        imageElement.src = "images/GUMBYWEBFIXED1.png";
+      };
       new Audio(getRandomItem(sounds, shownSounds)).play();
       stopJiggle();
     });
