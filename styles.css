@@ -84,33 +84,26 @@ body.macOS #image1 {
   display: none !important;
 }
 
-/* ========================= */
-/* SORCERER LAYOUT */
-/* ========================= */
-
-/* Hero image wrapper */
-.sorcerer-hero {
+#galleryC {
+  display: block;
+  column-count: 4;
+  column-gap: 10px;
   padding: 20px;
 }
 
-.sorcerer-hero img {
+#galleryC img {
   width: 100%;
-  display: block;
-  margin-bottom: 20px;
-}
-
-/* Denser masonry under hero */
-.sorcerer-grid {
-  column-count: 4;
-  column-gap: 10px;
-  padding: 0 20px 20px 20px;
-}
-
-.sorcerer-grid img {
-  width: 100%;
+  height: auto;
   margin-bottom: 10px;
   break-inside: avoid;
 }
+
+#galleryC img:first-child {
+  column-span: all; /* makes the first image full width */
+  width: 100%;
+  margin-bottom: 20px;
+}
+
 
 /* ========================= */
 /* Instagram */
