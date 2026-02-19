@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: "AppleGaramondLight";
   src: url("fonts/AppleGaramond-Light.ttf") format("truetype");
@@ -14,7 +13,7 @@
 body {
   font-family: AppleGaramondLight, Arial, sans-serif;
   background-color: #FEFFEC;
-  color: #000; /* Ensures text is always black */
+  color: #000;
 }
 
 /* Center main image */
@@ -34,7 +33,7 @@ body {
 
 /* macOS-specific styling */
 body.macOS #image1 {
-  max-width: 75%; /* Slightly smaller size for Mac */
+  max-width: 75%;
 }
 
 /* Toggle button styles */
@@ -56,7 +55,7 @@ body.macOS #image1 {
   transition: all 0.3s ease;
   opacity: 0.4;
   transform: scale(0.9);
-  color: #000; /* Ensures text is always black */
+  color: #000;
 }
 
 .toggle-container button.active {
@@ -64,7 +63,11 @@ body.macOS #image1 {
   transform: scale(1);
 }
 
-/* Gallery grid */
+/* ========================= */
+/* MASONRY GALLERY SYSTEM */
+/* ========================= */
+
+/* Default masonry (Archive + Client Work) */
 .grid-container {
   column-count: 2;
   column-gap: 10px;
@@ -74,22 +77,41 @@ body.macOS #image1 {
 .grid-container img {
   width: 100%;
   height: auto;
-  object-fit: cover;
   display: block;
   margin-bottom: 10px;
   break-inside: avoid;
 }
 
+/* Hide galleries safely */
 .hidden {
-  display: none;
+  display: none !important;
 }
 
-/* Instagram icon styles */
+/* ========================= */
+/* SORCERER CUSTOM MASONRY */
+/* ========================= */
+
+/* Increase density */
+#galleryC {
+  column-count: 4;
+}
+
+/* First Sorcerer image full width */
+#galleryC img:first-child {
+  column-span: all;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* ========================= */
+/* Instagram icon */
+/* ========================= */
+
 #instagram-icon {
   position: fixed;
   top: 20px;
   right: 20px;
-  width: 33.33%; /* 300% smaller */
+  width: 33.33%;
   max-width: 50px;
   height: auto;
   cursor: pointer;
@@ -100,7 +122,10 @@ body.macOS #image1 {
   transform: scale(1.1);
 }
 
+/* ========================= */
 /* Jiggle animation */
+/* ========================= */
+
 @keyframes jiggle {
   0%, 100% { transform: rotate(0deg); }
   25% { transform: rotate(1deg); }
@@ -112,24 +137,3 @@ body.macOS #image1 {
   animation: jiggle 0.2s infinite;
   transition: transform 30s linear;
 }
-
-#galleryC.grid-container {
-  column-count: unset;
-}
-
-#galleryC {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  padding: 20px;
-}
-
-#galleryC img:first-child {
-  grid-column: 1 / -1;
-}
-
-#galleryC img {
-  width: 100%;
-  height: auto;
-}
-
