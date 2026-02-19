@@ -66,6 +66,7 @@ body.macOS #image1 {
 /* MASONRY SYSTEM */
 /* ========================= */
 
+/* Generic masonry for galleries */
 .grid-container {
   column-count: 2;
   column-gap: 10px;
@@ -74,7 +75,6 @@ body.macOS #image1 {
 
 .grid-container img {
   width: 100%;
-  height: auto;
   display: block;
   margin-bottom: 10px;
   break-inside: avoid;
@@ -84,31 +84,21 @@ body.macOS #image1 {
   display: none !important;
 }
 
+/* Sorcerer-specific masonry */
 #galleryC {
-  display: block;
   column-count: 3;
   column-gap: 10px;
   padding: 20px;
 }
 
-#galleryC img {
-  width: 100%;
-  height: auto;
-  margin-bottom: 10px;
-  break-inside: avoid;
-}
-
-#galleryC img:middle {
-  column-span: all; /* makes the first image full width */
+#galleryC img.middle {
+  column-span: all; /* spans all columns */
   width: 100%;
   margin-bottom: 20px;
 }
 
-
 /* ========================= */
 /* Instagram */
-/* ========================= */
-
 #instagram-icon {
   position: fixed;
   top: 20px;
@@ -125,9 +115,7 @@ body.macOS #image1 {
 }
 
 /* ========================= */
-/* Jiggle */
-/* ========================= */
-
+/* Jiggle animation */
 @keyframes jiggle {
   0%, 100% { transform: rotate(0deg); }
   25% { transform: rotate(1deg); }
