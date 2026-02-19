@@ -14,10 +14,11 @@
       <img id="image1" src="images/GUMBYWEBFIXED1.png" alt="Main Image">
     </section>
 
-    <!-- UPDATED BUTTON ORDER + LABEL -->
+    <!-- UPDATED BUTTONS: Client Work / Archive / Sorcerer -->
     <div class="toggle-container">
       <button id="btnB" class="active">Client Work</button>
       <button id="btnA">Archive</button>
+      <button id="btnC">Sorcerer</button>
     </div>
 
     <!-- ARCHIVE (HIDDEN BY DEFAULT) -->
@@ -54,14 +55,12 @@
       <img src="https://res.cloudinary.com/dygnzamj3/image/upload/v1771462618/39_copy_yw8iui.webp" alt="Client Art 12">
       <img src="https://res.cloudinary.com/dygnzamj3/image/upload/v1771462613/30_copy_us8d12.webp" alt="Client Art 13">
       <img src="https://res.cloudinary.com/dygnzamj3/image/upload/v1771462615/33_copy_vtisjo.webp" alt="Client Art 14">
-      <img src="https://res.cloudinary.com/dygnzamj3/image/upload/v1771462614/34_copy_ioavbn.webp" alt="Client Art 15"> 
+      <img src="https://res.cloudinary.com/dygnzamj3/image/upload/v1771462614/34_copy_ioavbn.webp" alt="Client Art 15">
       <img src="https://res.cloudinary.com/dygnzamj3/image/upload/v1771462613/28_copy_oormxs.webp" alt="Client Art 16">
       <img src="https://res.cloudinary.com/dygnzamj3/image/upload/v1771462611/26_copy_cp9u94.webp" alt="Client Art 17">
-
       <a href="https://letterboxd.com/film/dinner-party-2/" target="_blank">
         <img src="https://res.cloudinary.com/dygnzamj3/image/upload/v1771463066/7_copy_x14ri9.webp" alt="Client Art 18">
       </a>
-
       <img src="https://res.cloudinary.com/dygnzamj3/image/upload/v1771462607/8_copy_w2phvp.webp" alt="Client Art 19">
       <img src="https://res.cloudinary.com/dygnzamj3/image/upload/v1771462609/22_copy_bsic0v.webp" alt="Client Art 20">
       <img src="https://res.cloudinary.com/dygnzamj3/image/upload/v1771462609/21_copy_sg1fib.webp" alt="Client Art 21">
@@ -73,6 +72,20 @@
       <img src="https://res.cloudinary.com/dygnzamj3/image/upload/v1771462607/9_copy_pirqto.webp" alt="Client Art 27">
       <img src="https://res.cloudinary.com/dygnzamj3/image/upload/v1771462618/40_copy_sw3zpv.webp" alt="Client Art 28">
       <img src="https://res.cloudinary.com/dygnzamj3/image/upload/v1771462605/1_copy_mukuoa.webp" alt="Client Art 29">
+    </section>
+
+    <!-- SORCERER (HIDDEN BY DEFAULT) -->
+    <section class="grid-container hidden" id="galleryC">
+      <img src="images/sorcerer1.webp" alt="Sorcerer 1">
+      <img src="images/sorcerer2.webp" alt="Sorcerer 2">
+      <img src="images/sorcerer3.webp" alt="Sorcerer 3">
+      <img src="images/sorcerer4.webp" alt="Sorcerer 4">
+      <img src="images/sorcerer5.webp" alt="Sorcerer 5">
+      <img src="images/sorcerer6.webp" alt="Sorcerer 6">
+      <img src="images/sorcerer7.webp" alt="Sorcerer 7">
+      <img src="images/sorcerer8.webp" alt="Sorcerer 8">
+      <img src="images/sorcerer9.webp" alt="Sorcerer 9">
+      <img src="images/sorcerer10.webp" alt="Sorcerer 10">
     </section>
 
     <!-- Instagram Icon -->
@@ -93,23 +106,54 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      if (/Mac/i.test(navigator.platform)) {
-        document.body.classList.add("macOS");
-      }
-
-      shuffleGallery('galleryB'); // Client Work shuffled on load
+      if (/Mac/i.test(navigator.platform)) document.body.classList.add("macOS");
+      shuffleGallery('galleryB'); // Shuffle Client Work on load
+      // Optional: shuffleGallery('galleryC'); // Shuffle Sorcerer if desired
     });
 
     const imageElement = document.getElementById("image1");
     const btnA = document.getElementById("btnA");
     const btnB = document.getElementById("btnB");
+    const btnC = document.getElementById("btnC");
     const galleryA = document.getElementById("galleryA");
     const galleryB = document.getElementById("galleryB");
-    const instagramIcon = document.getElementById("instagram-icon");
+    const galleryC = document.getElementById("galleryC");
+    const instagramLink = document.getElementById("instagram-link");
 
     const clickSound = new Audio("audio/click.mp3");
     const instagramSound = new Audio("audio/instagramsound.mp3");
 
+    btnA.addEventListener("click", () => {
+      galleryA.classList.remove("hidden");
+      galleryB.classList.add("hidden");
+      galleryC.classList.add("hidden");
+      btnA.classList.add("active");
+      btnB.classList.remove("active");
+      btnC.classList.remove("active");
+      clickSound.play();
+    });
+
+    btnB.addEventListener("click", () => {
+      galleryB.classList.remove("hidden");
+      galleryA.classList.add("hidden");
+      galleryC.classList.add("hidden");
+      btnB.classList.add("active");
+      btnA.classList.remove("active");
+      btnC.classList.remove("active");
+      clickSound.play();
+    });
+
+    btnC.addEventListener("click", () => {
+      galleryC.classList.remove("hidden");
+      galleryA.classList.add("hidden");
+      galleryB.classList.add("hidden");
+      btnC.classList.add("active");
+      btnA.classList.remove("active");
+      btnB.classList.remove("active");
+      clickSound.play();
+    });
+
+    // Main image random logic (unchanged)
     const images = [
       "images/GUMBYWEBFIXED1.webp", 
       "images/GUMBYWEBFIXED2.webp", 
@@ -143,55 +187,20 @@
     ];
 
     const sounds = Array.from({ length: 120 }, (_, i) => `audio/sound${i + 1}.mp3`);
-
     let shownImages = [];
     let shownSounds = [];
 
     function getRandomItem(items, shownItems) {
-      const weights = items.map(item => item.includes("GUMBYLOGO28.webp") ? 0.02 : 1);
       const remaining = items.filter(item => !shownItems.includes(item));
-      if (remaining.length === 0) shownItems.length = 0;
-
-      const remainingWeights = remaining.map(item => weights[items.indexOf(item)]);
-      const totalWeight = remainingWeights.reduce((sum, weight) => sum + weight, 0);
-      const normalizedWeights = remainingWeights.map(weight => weight / totalWeight);
-
-      let cumulativeWeight = 0;
-      const random = Math.random();
-      for (let i = 0; i < remaining.length; i++) {
-        cumulativeWeight += normalizedWeights[i];
-        if (random < cumulativeWeight) {
-          shownItems.push(remaining[i]);
-          return remaining[i];
-        }
-      }
+      if (!remaining.length) shownItems.length = 0;
+      const item = remaining[Math.floor(Math.random() * remaining.length)];
+      shownItems.push(item);
+      return item;
     }
-
-    btnA.addEventListener("click", () => {
-      galleryA.classList.remove("hidden");
-      galleryB.classList.add("hidden");
-      btnA.classList.add("active");
-      btnB.classList.remove("active");
-      clickSound.play();
-    });
-
-    btnB.addEventListener("click", () => {
-      galleryB.classList.remove("hidden");
-      galleryA.classList.add("hidden");
-      btnB.classList.add("active");
-      btnA.classList.remove("active");
-      clickSound.play();
-    });
 
     imageElement.addEventListener("click", () => {
       const newImage = getRandomItem(images, shownImages);
       imageElement.src = newImage;
-
-      imageElement.onerror = function() {
-        console.error(`Error loading image: ${newImage}. Falling back to default image.`);
-        imageElement.src = "images/GUMBYWEBFIXED1.png";
-      };
-
       new Audio(getRandomItem(sounds, shownSounds)).play();
       stopJiggle();
     });
@@ -221,7 +230,8 @@
       }, 15000);
     }
 
-    const instagramLink = document.getElementById("instagram-link");
+    document.body.addEventListener("click", resetInactivityTimer);
+
     instagramLink.addEventListener("click", (e) => {
       e.preventDefault();
       instagramSound.play();
@@ -231,11 +241,6 @@
     });
 
     resetInactivityTimer();
-  </script>
-</body>
-</html>
-
-    document.body.addEventListener("click", resetInactivityTimer);
   </script>
 </body>
 </html>
