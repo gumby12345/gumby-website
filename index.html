@@ -14,14 +14,12 @@
       <img id="image1" src="images/GUMBYWEBFIXED1.webp" alt="Main Image">
     </section>
 
-    <!-- UPDATED BUTTONS: Client Work / Archive / Sorcerer -->
     <div class="toggle-container">
       <button id="btnB" class="active">Client Work</button>
       <button id="btnA">Archive</button>
       <button id="btnC">Sorcerer</button>
     </div>
 
-    <!-- ARCHIVE (HIDDEN BY DEFAULT) -->
     <section class="grid-container hidden" id="galleryA">
       <img src="https://res.cloudinary.com/dygnzamj3/image/upload/v1771463046/14_copy_fzicdn.webp" alt="Art 1">
       <img src="https://res.cloudinary.com/dygnzamj3/image/upload/v1771463039/15_copy_hyweql.webp" alt="Art 2">
@@ -39,7 +37,6 @@
       <img src="https://res.cloudinary.com/dygnzamj3/image/upload/v1771462608/16_copy_dggeey.webp" alt="Art 14">
     </section>
 
-    <!-- CLIENT WORK (VISIBLE BY DEFAULT) -->
     <section class="grid-container" id="galleryB">
       <img src="https://res.cloudinary.com/dygnzamj3/image/upload/v1771463031/60_copy_czl80x.webp" alt="Client Art 1">
       <img src="https://res.cloudinary.com/dygnzamj3/image/upload/v1771463037/36_copy_c2iuej.webp" alt="Client Art 2">
@@ -74,7 +71,6 @@
       <img src="https://res.cloudinary.com/dygnzamj3/image/upload/v1771462605/1_copy_mukuoa.webp" alt="Client Art 29">
     </section>
 
-    <!-- SORCERER (HIDDEN BY DEFAULT) -->
     <section class="grid-container hidden" id="galleryC">
       <img src="https://res.cloudinary.com/dygnzamj3/image/upload/v1771465174/SORCERERFINALFUCKINGFINALTRANS_mr0ll6.png" alt="Sorcerer 1">
       <img src="https://res.cloudinary.com/dygnzamj3/image/upload/v1771465124/45_fg4q5u.webp" alt="Sorcerer 2">
@@ -91,7 +87,6 @@
       <img src="https://res.cloudinary.com/dygnzamj3/image/upload/v1771462727/53_copy_yzkohe.webp" alt="Sorcerer 13">
     </section>
 
-    <!-- Instagram Icon -->
     <a href="https://www.instagram.com/gumb_y/" target="_blank" id="instagram-link">
       <img id="instagram-icon" src="images/instagram.webp" alt="Instagram">
     </a>
@@ -110,11 +105,29 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       if (/Mac/i.test(navigator.platform)) document.body.classList.add("macOS");
-      shuffleGallery('galleryB'); // Shuffle Client Work on load
-      // Optional: shuffleGallery('galleryC'); // Shuffle Sorcerer if desired
+      shuffleGallery('galleryB');
+
+      // Add fallback for broken images
+      replaceBrokenImages(".grid-container");
+      replaceBrokenImages(".gallery");
     });
 
+    function replaceBrokenImages(containerSelector) {
+      const imgs = document.querySelectorAll(containerSelector + " img");
+      imgs.forEach(img => {
+        img.onerror = () => {
+          img.onerror = null;
+          img.src = "images/GUMBYWEBFIXED1.png";
+        };
+      });
+    }
+
     const imageElement = document.getElementById("image1");
+    imageElement.onerror = () => {
+      imageElement.onerror = null;
+      imageElement.src = "images/GUMBYWEBFIXED1.png";
+    };
+
     const btnA = document.getElementById("btnA");
     const btnB = document.getElementById("btnB");
     const btnC = document.getElementById("btnC");
@@ -156,37 +169,17 @@
       clickSound.play();
     });
 
-    // Main image random logic (unchanged)
     const images = [
-      "images/GUMBYWEBFIXED1.webp", 
-      "images/GUMBYWEBFIXED2.webp", 
-      "images/GUMBYLOGO3.webp",
-      "images/GUMBYLOGO4.webp", 
-      "images/GUMBYLOGO2-.webp", 
-      "images/GUMBYLOGO5.webp", 
-      "images/GUMBYLOGO6.webp", 
-      "images/GUMBYLOGO7.webp", 
-      "images/GUMBYLOGO8.webp",
-      "images/GUMBYLOGO9.webp", 
-      "images/GUMBYLOGO10.webp", 
-      "images/GUMBYLOGO11.webp",
-      "images/GUMBYLOGO12.webp", 
-      "images/GUMBYLOGO13.webp", 
-      "images/GUMBYLOGO14.webp",
-      "images/GUMBYLOGO15.webp", 
-      "images/GUMBYLOGO16.webp", 
-      "images/GUMBYLOGO17.webp",
-      "images/GUMBYLOGO18.webp",
-      "images/GUMBYLOGO19.webp",
-      "images/GUMBYLOGO20.webp",
-      "images/GUMBYLOGO21.webp",
-      "images/GUMBYLOGO22.webp",
-      "images/GUMBYLOGO23.webp",
-      "images/GUMBYLOGO24.webp",
-      "images/GUMBYLOGO25.webp",
-      "images/GUMBYLOGO26.webp",
-      "images/GUMBYLOGO27.webp",
-      "images/GUMBYLOGO28.webp"
+      "images/GUMBYWEBFIXED1.webp", "images/GUMBYWEBFIXED2.webp", "images/GUMBYLOGO3.webp",
+      "images/GUMBYLOGO4.webp", "images/GUMBYLOGO2-.webp", "images/GUMBYLOGO5.webp", 
+      "images/GUMBYLOGO6.webp", "images/GUMBYLOGO7.webp", "images/GUMBYLOGO8.webp",
+      "images/GUMBYLOGO9.webp", "images/GUMBYLOGO10.webp", "images/GUMBYLOGO11.webp",
+      "images/GUMBYLOGO12.webp", "images/GUMBYLOGO13.webp", "images/GUMBYLOGO14.webp",
+      "images/GUMBYLOGO15.webp", "images/GUMBYLOGO16.webp", "images/GUMBYLOGO17.webp",
+      "images/GUMBYLOGO18.webp", "images/GUMBYLOGO19.webp", "images/GUMBYLOGO20.webp",
+      "images/GUMBYLOGO21.webp", "images/GUMBYLOGO22.webp", "images/GUMBYLOGO23.webp",
+      "images/GUMBYLOGO24.webp", "images/GUMBYLOGO25.webp", "images/GUMBYLOGO26.webp",
+      "images/GUMBYLOGO27.webp", "images/GUMBYLOGO28.webp"
     ];
 
     const sounds = Array.from({ length: 120 }, (_, i) => `audio/sound${i + 1}.mp3`);
