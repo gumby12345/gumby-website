@@ -112,26 +112,3 @@ body.macOS #image1 {
   animation: jiggle 0.2s infinite;
   transition: transform 30s linear;
 }
-
-/* Sorcerer gallery: first image full width, rest 50% width */
-#galleryC {
-  column-count: 2; /* Keep 2 columns for the smaller images */
-  column-gap: 10px;
-  padding: 20px;
-}
-
-#galleryC img {
-  width: 100%; /* Default for all images before column layout */
-  display: block;
-  margin-bottom: 10px;
-  break-inside: avoid;
-  transition: all 0.3s ease;
-}
-
-/* First image spans full width */
-#galleryC img:first-child {
-  width: 100%;
-  column-span: all; /* Forces first image to span both columns */
-  margin-bottom: 20px;
-}
-
