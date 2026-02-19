@@ -98,11 +98,12 @@ body.macOS #image1 {
   object-fit: cover;
 }
 
-/* Full-width middle image */
 #galleryC img.middle {
-  grid-column: 1 / -1;  /* spans all columns */
-  grid-row: 3 / span 2; /* starts at row 3, spans 2 rows */
+  grid-column: 1 / -1;
+  grid-row: 3 / span 2;
+  margin-top: 20px; /* extra spacing above */
 }
+
 
 
 /* ========================= */
