@@ -92,13 +92,13 @@ body.macOS #image1 {
 }
 
 #galleryC img {
-  width: 100%;
+  width: 50%;
   height: auto;
   margin-bottom: 10px;
   break-inside: avoid;
 }
 
-#galleryC img:first-child {
+#galleryC img:middle {
   column-span: all; /* makes the first image full width */
   width: 100%;
   margin-bottom: 20px;
