@@ -102,8 +102,10 @@ body.macOS #image1 {
 #galleryC img.middle {
   grid-column: 1 / -1;   /* span all columns */
   grid-row: span 20;      /* span multiple rows to make it taller */
+  /* Force it to start on its own row */
+  display: block;
+  break-after: always;
 }
-
 
 /* ========================= */
 /* Instagram */
