@@ -7,7 +7,7 @@
   <title>gumby's house</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="preload" as="audio" href="audio/click.mp3" type="audio/mpeg">
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon"> <!-- Favicon Link -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
   <main>
@@ -15,13 +15,14 @@
       <img id="image1" src="images/GUMBYWEBFIXED1.png" alt="Main Image">
     </section>
 
+    <!-- UPDATED BUTTON ORDER + LABEL -->
     <div class="toggle-container">
-      <button id="btnA" class="active">Personal Archive</button>
-      <button id="btnB">Client Work</button>
+      <button id="btnB" class="active">Client Work</button>
+      <button id="btnA">Archive</button>
     </div>
 
-    <section class="grid-container" id="galleryA">
-      <!-- Gallery A images -->
+    <!-- ARCHIVE (HIDDEN BY DEFAULT) -->
+    <section class="grid-container hidden" id="galleryA">
       <img src="" alt="Art 1">
       <img src="" alt="Art 2">
       <img src="" alt="Art 3">
@@ -37,41 +38,40 @@
       <img src="" alt="Art 13">
     </section>
 
-<section class="grid-container hidden" id="galleryB">
-  <!-- Gallery B images -->
-  <img src="https://gumby.x02.me/i/JKRB3B.png" alt="Client Art 1">
-  <img src="" alt="Client Art 2">
-  <img src="" alt="Client Art 4">
-  <img src="" alt="Client Art 5">
-  <img src="" alt="Client Art 6">
-  <img src="" alt="Client Art 7">
-  <img src="" alt="Client Art 8">
-  <img src="" alt="Client Art 9">
-  <img src="" alt="Client Art 10">
-  <img src="" alt="Client Art 11">
-  <img src="" alt="Client Art 12">
-  <img src="" alt="Client Art 13">
-  <img src="" alt="Client Art 14">
-  <img src="" alt="Client Art 15"> 
-  <img src="" alt="Client Art 16">
-  <img src="" alt="Client Art 17">
+    <!-- CLIENT WORK (VISIBLE BY DEFAULT) -->
+    <section class="grid-container" id="galleryB">
+      <img src="https://gumby.x02.me/i/JKRB3B.png" alt="Client Art 1">
+      <img src="" alt="Client Art 2">
+      <img src="" alt="Client Art 4">
+      <img src="" alt="Client Art 5">
+      <img src="" alt="Client Art 6">
+      <img src="" alt="Client Art 7">
+      <img src="" alt="Client Art 8">
+      <img src="" alt="Client Art 9">
+      <img src="" alt="Client Art 10">
+      <img src="" alt="Client Art 11">
+      <img src="" alt="Client Art 12">
+      <img src="" alt="Client Art 13">
+      <img src="" alt="Client Art 14">
+      <img src="" alt="Client Art 15"> 
+      <img src="" alt="Client Art 16">
+      <img src="" alt="Client Art 17">
 
-  <a href="https://letterboxd.com/film/dinner-party-2/" target="_blank">
-    <img src="" alt="Client Art 18">
-  </a>
+      <a href="https://letterboxd.com/film/dinner-party-2/" target="_blank">
+        <img src="" alt="Client Art 18">
+      </a>
 
-  <img src="" alt="Client Art 19">
-  <img src="" alt="Client Art 20">
-  <img src="" alt="Client Art 21">
-  <img src="" alt="Client Art 22">
-  <img src="" alt="Client Art 23">
-  <img src="" alt="Client Art 24">
-  <img src="" alt="Client Art 25">
-  <img src="" alt="Client Art 26">
-  <img src="" alt="Client Art 27">
-  <img src="" alt="Client Art 28">
-</section>
-
+      <img src="" alt="Client Art 19">
+      <img src="" alt="Client Art 20">
+      <img src="" alt="Client Art 21">
+      <img src="" alt="Client Art 22">
+      <img src="" alt="Client Art 23">
+      <img src="" alt="Client Art 24">
+      <img src="" alt="Client Art 25">
+      <img src="" alt="Client Art 26">
+      <img src="" alt="Client Art 27">
+      <img src="" alt="Client Art 28">
+    </section>
 
     <!-- Instagram Icon -->
     <a href="https://www.instagram.com/gumb_y/" target="_blank" id="instagram-link">
@@ -95,7 +95,7 @@
         document.body.classList.add("macOS");
       }
 
-      shuffleGallery('galleryB');
+      shuffleGallery('galleryB'); // Client Work shuffled on load
     });
 
     const imageElement = document.getElementById("image1");
@@ -145,27 +145,26 @@
     let shownImages = [];
     let shownSounds = [];
 
-  function getRandomItem(items, shownItems) {
-    const weights = items.map(item => item.includes("GUMBYLOGO28.webp") ? 0.02 : 1);
-    const remaining = items.filter(item => !shownItems.includes(item));
-    if (remaining.length === 0) shownItems.length = 0; // Reset when all items have been shown.
+    function getRandomItem(items, shownItems) {
+      const weights = items.map(item => item.includes("GUMBYLOGO28.webp") ? 0.02 : 1);
+      const remaining = items.filter(item => !shownItems.includes(item));
+      if (remaining.length === 0) shownItems.length = 0;
 
-    const remainingWeights = remaining.map(item => weights[items.indexOf(item)]);
-    const totalWeight = remainingWeights.reduce((sum, weight) => sum + weight, 0);
-    const normalizedWeights = remainingWeights.map(weight => weight / totalWeight);
+      const remainingWeights = remaining.map(item => weights[items.indexOf(item)]);
+      const totalWeight = remainingWeights.reduce((sum, weight) => sum + weight, 0);
+      const normalizedWeights = remainingWeights.map(weight => weight / totalWeight);
 
-    let cumulativeWeight = 0;
-    const random = Math.random();
-    for (let i = 0; i < remaining.length; i++) {
-      cumulativeWeight += normalizedWeights[i];
-      if (random < cumulativeWeight) {
-        shownItems.push(remaining[i]);
-        return remaining[i];
+      let cumulativeWeight = 0;
+      const random = Math.random();
+      for (let i = 0; i < remaining.length; i++) {
+        cumulativeWeight += normalizedWeights[i];
+        if (random < cumulativeWeight) {
+          shownItems.push(remaining[i]);
+          return remaining[i];
+        }
       }
     }
-  }
 
-    // Toggle buttons
     btnA.addEventListener("click", () => {
       galleryA.classList.remove("hidden");
       galleryB.classList.add("hidden");
@@ -182,19 +181,18 @@
       clickSound.play();
     });
 
-     // Main image click logic
-  imageElement.addEventListener("click", () => {
-    const newImage = getRandomItem(images, shownImages);
-    imageElement.src = newImage;
+    imageElement.addEventListener("click", () => {
+      const newImage = getRandomItem(images, shownImages);
+      imageElement.src = newImage;
 
-    imageElement.onerror = function() {
-      console.error(`Error loading image: ${newImage}. Falling back to default image.`);
-      imageElement.src = "images/GUMBYWEBFIXED1.png";
-    };
+      imageElement.onerror = function() {
+        console.error(`Error loading image: ${newImage}. Falling back to default image.`);
+        imageElement.src = "images/GUMBYWEBFIXED1.png";
+      };
 
-    new Audio(getRandomItem(sounds, shownSounds)).play();
-    stopJiggle();
-  });
+      new Audio(getRandomItem(sounds, shownSounds)).play();
+      stopJiggle();
+    });
 
     let jiggleTimer;
     let growTimeout;
@@ -231,6 +229,10 @@
     });
 
     resetInactivityTimer();
+  </script>
+</body>
+</html>
+
     document.body.addEventListener("click", resetInactivityTimer);
   </script>
 </body>
