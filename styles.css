@@ -3,7 +3,7 @@
   src: url("fonts/AppleGaramond-Light.ttf") format("truetype");
 }
 
-/* Reset and base styles */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -31,12 +31,11 @@ body {
   transition: transform 0.2s ease;
 }
 
-/* macOS-specific styling */
 body.macOS #image1 {
   max-width: 75%;
 }
 
-/* Toggle button styles */
+/* Toggle buttons */
 .toggle-container {
   display: flex;
   justify-content: center;
@@ -64,10 +63,9 @@ body.macOS #image1 {
 }
 
 /* ========================= */
-/* MASONRY GALLERY SYSTEM */
+/* MASONRY SYSTEM */
 /* ========================= */
 
-/* Default masonry (Archive + Client Work) */
 .grid-container {
   column-count: 2;
   column-gap: 10px;
@@ -82,29 +80,40 @@ body.macOS #image1 {
   break-inside: avoid;
 }
 
-/* Hide galleries safely */
 .hidden {
   display: none !important;
 }
 
 /* ========================= */
-/* SORCERER CUSTOM MASONRY */
+/* SORCERER LAYOUT */
 /* ========================= */
 
-/* Increase density */
-#galleryC {
-  column-count: 4;
+/* Hero image wrapper */
+.sorcerer-hero {
+  padding: 20px;
 }
 
-/* First Sorcerer image full width */
-#galleryC img:first-child {
-  column-span: all;
+.sorcerer-hero img {
   width: 100%;
+  display: block;
   margin-bottom: 20px;
 }
 
+/* Denser masonry under hero */
+.sorcerer-grid {
+  column-count: 4;
+  column-gap: 10px;
+  padding: 0 20px 20px 20px;
+}
+
+.sorcerer-grid img {
+  width: 100%;
+  margin-bottom: 10px;
+  break-inside: avoid;
+}
+
 /* ========================= */
-/* Instagram icon */
+/* Instagram */
 /* ========================= */
 
 #instagram-icon {
@@ -123,7 +132,7 @@ body.macOS #image1 {
 }
 
 /* ========================= */
-/* Jiggle animation */
+/* Jiggle */
 /* ========================= */
 
 @keyframes jiggle {
