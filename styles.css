@@ -84,6 +84,23 @@ body.macOS #image1 {
   display: none;
 }
 
+#galleryC {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 20px;
+}
+
+#galleryC img:first-child {
+  grid-column: 1 / -1;
+}
+
+#galleryC img {
+  width: 100%;
+  height: auto;
+}
+
+
 /* Instagram icon styles */
 #instagram-icon {
   position: fixed;
